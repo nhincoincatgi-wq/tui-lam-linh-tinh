@@ -46,7 +46,7 @@ html[data-theme="dark"] .btn.primary{color:#08111f}
 .timer-wrap{margin:10px 0 16px}.timer-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px}
 .timerbar{height:7px;background:var(--line);border-radius:999px;overflow:hidden}.timerbar>div{height:100%;background:var(--accent);width:100%;transition:width 1s linear}
 .timerbar.danger>div{background:var(--bad)}
-.controls{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-bottom:14px}
+.controls{display:grid;grid-template-columns:1.15fr 1fr auto auto;gap:10px;align-items:end;margin-bottom:14px}
 .field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px}
 .field select{width:100%;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}
 .flash{min-height:310px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer}
@@ -77,7 +77,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   </div>
   <div class="header-actions">
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v2.3 • GDM 50</div>
+    <div class="pill">v2.4 • Đề 60 câu</div>
   </div>
 </header>
 
@@ -95,7 +95,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
     <p>Quiz PPROM hiện có 50 câu bám mục “13. Ối Vỡ Non Trên Thai Non Tháng (PPROM)” trong file học. Câu sai hoặc hết giờ được tự động đưa vào “Chưa thuộc”.</p>
     <div class="actions">
       <button class="btn primary" onclick="startTopic('pprom')">Làm 50 câu PPROM</button>
-      <button class="btn secondary" onclick="startTopic('ptl')">Làm 50 câu CDSN</button><button class="btn secondary" onclick="startTopic('tsg')">Làm 50 câu TSG</button><button class="btn secondary" onclick="startTopic('gdm')">Làm 50 câu GDM</button><button class="btn secondary" onclick="go('flashcards')">Ôn flashcard CDSN</button>
+      <button class="btn secondary" onclick="startTopic('ptl')">Làm 50 câu CDSN</button><button class="btn secondary" onclick="startTopic('tsg')">Làm 50 câu TSG</button><button class="btn secondary" onclick="startTopic('gdm')">Làm 50 câu GDM</button><button class="btn primary" onclick="startExam()">Làm đề tổng hợp 60 câu</button><button class="btn secondary" onclick="go('flashcards')">Ôn flashcard CDSN</button>
     </div>
   </div>
   <div class="grid" style="margin-top:12px">
@@ -149,6 +149,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
       </select>
     </div>
     <button class="btn secondary full-mobile" onclick="restartQuiz()">Trộn & làm lại</button>
+    <button class="btn primary full-mobile" onclick="startExam()">Làm đề 60 câu</button>
   </div>
 
   <div class="quiz-head">
@@ -278,7 +279,7 @@ cases:[
 const STORE='ob_quick_trainer_v2';
 let state=JSON.parse(localStorage.getItem(STORE)||'null')||{known:{},missed:{},answered:0,correct:0,theme:null,timer:30};
 let flashOrder=DATA.flashcards.map((_,i)=>i),fi=0;
-let currentTopic='pprom',quizPool=[],quizOrder=[],qi=0,locked=false,reviewMode=false;
+let currentTopic='pprom',quizPool=[],quizOrder=[],qi=0,locked=false,reviewMode=false,examMode=false,examCorrect=0,examAnswered=0;
 let timerHandle=null,autoNextHandle=null,timeLeft=0,timeTotal=0;
 
 function save(){localStorage.setItem(STORE,JSON.stringify(state));updateMetrics();renderMissed()}
@@ -326,16 +327,59 @@ function shuffleFlashcards(){flashOrder.sort(()=>Math.random()-.5);fi=0;renderFl
 function allQuestionMap(){
  const m={};Object.keys(DATA.quizzes).forEach(k=>DATA.quizzes[k].forEach(q=>m[q.id]=q));return m;
 }
-function startTopic(topic){currentTopic=topic;reviewMode=false;document.getElementById('topicSelect').value=topic;buildQuizPool();go('quiz');renderQuiz()}
-function changeTopic(topic){currentTopic=topic;reviewMode=false;buildQuizPool();renderQuiz()}
+function shuffled(arr){
+ const a=arr.slice();
+ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+ return a;
+}
+function topicName(key){
+ return ({pprom:'PPROM',ptl:'CDSN',tsg:'TSG/Sản giật',gdm:'GDM'}[key]||key);
+}
+function startTopic(topic){
+ examMode=false;reviewMode=false;examCorrect=0;examAnswered=0;currentTopic=topic;
+ document.getElementById('topicSelect').value=topic;buildQuizPool();go('quiz');renderQuiz();
+}
+function changeTopic(topic){
+ examMode=false;reviewMode=false;examCorrect=0;examAnswered=0;currentTopic=topic;buildQuizPool();renderQuiz();
+}
 function buildQuizPool(){
  quizPool=DATA.quizzes[currentTopic].slice();quizOrder=quizPool.map((_,i)=>i);qi=0;locked=false;
 }
-function restartQuiz(){reviewMode=false;buildQuizPool();quizOrder.sort(()=>Math.random()-.5);renderQuiz()}
+function buildExamPool(count=60){
+ const keys=shuffled(Object.keys(DATA.quizzes));
+ const target=Math.min(count,keys.reduce((n,k)=>n+DATA.quizzes[k].length,0));
+ const base=Math.floor(target/keys.length),remainder=target%keys.length;
+ let picked=[],used=new Set();
+ keys.forEach((k,i)=>{
+   const quota=base+(i<remainder?1:0);
+   shuffled(DATA.quizzes[k]).slice(0,quota).forEach(q=>{picked.push(q);used.add(q.id)});
+ });
+ if(picked.length<target){
+   const leftovers=shuffled(keys.flatMap(k=>DATA.quizzes[k]).filter(q=>!used.has(q.id)));
+   picked=picked.concat(leftovers.slice(0,target-picked.length));
+ }
+ return shuffled(picked);
+}
+function startExam(){
+ stopTimer();reviewMode=false;examMode=true;examCorrect=0;examAnswered=0;
+ let pool=[],sig='';
+ for(let tries=0;tries<6;tries++){
+   pool=buildExamPool(60);
+   sig=pool.map(q=>q.id).slice().sort().join('|');
+   if(sig!==state.lastExamSignature)break;
+ }
+ state.lastExamSignature=sig;localStorage.setItem(STORE,JSON.stringify(state));
+ quizPool=pool;quizOrder=quizPool.map((_,i)=>i);qi=0;locked=false;
+ go('quiz');renderQuiz();
+}
+function restartQuiz(){
+ if(examMode){startExam();return}
+ reviewMode=false;examCorrect=0;examAnswered=0;buildQuizPool();quizOrder=shuffled(quizOrder);renderQuiz();
+}
 function startMissedReview(){
  const map=allQuestionMap(),ids=Object.keys(state.missed),qs=ids.map(id=>map[id]).filter(Boolean);
  if(!qs.length){go('missed');return}
- quizPool=qs;quizOrder=quizPool.map((_,i)=>i);qi=0;reviewMode=true;go('quiz');renderQuiz();
+ examMode=false;examCorrect=0;examAnswered=0;quizPool=qs;quizOrder=quizPool.map((_,i)=>i);qi=0;reviewMode=true;go('quiz');renderQuiz();
 }
 function quizQuestion(){return quizPool[quizOrder[qi]]}
 
@@ -364,7 +408,7 @@ function markMissed(q,reason,chosen){
  state.missed[q.id]={id:q.id,q:q.q,correct:q.opts[q.ans],chosen:chosen||'',reason:reason,why:q.why,topic:q.id.startsWith('pp')?'PPROM':(q.id.startsWith('tsg')?'TSG/Sản giật':(q.id.startsWith('gdm')?'GDM':'CDSN'))};
 }
 function timeoutQuestion(){
- if(locked)return;locked=true;const q=quizQuestion();state.answered++;markMissed(q,'Hết giờ','Chưa chọn');
+ if(locked)return;locked=true;const q=quizQuestion();state.answered++;if(examMode)examAnswered++;markMissed(q,'Hết giờ','Chưa chọn');
  document.querySelectorAll('#quizOptions .option')[q.ans].classList.add('correct');
  const f=document.getElementById('quizFeedback');f.className='feedback show warn';f.textContent='Hết giờ → tính là chưa thuộc. '+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();
@@ -372,7 +416,7 @@ function timeoutQuestion(){
 }
 function skipQuiz(){
  if(locked){nextQuiz();return}
- stopTimer();locked=true;const q=quizQuestion();state.answered++;markMissed(q,'Bỏ qua','Chưa chọn');
+ stopTimer();locked=true;const q=quizQuestion();state.answered++;if(examMode)examAnswered++;markMissed(q,'Bỏ qua','Chưa chọn');
  document.querySelectorAll('#quizOptions .option')[q.ans].classList.add('correct');
  const f=document.getElementById('quizFeedback');f.className='feedback show warn';f.textContent='Bỏ qua → đã đưa vào Chưa thuộc. '+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();scheduleAutoNext();
@@ -383,7 +427,7 @@ function renderQuiz(){
  if(qi>=quizOrder.length){renderQuizDone();return}
  const q=quizQuestion();locked=false;
  document.getElementById('quizCounter').textContent='Câu '+(qi+1)+'/'+quizOrder.length;
- document.getElementById('quizModeLabel').textContent=reviewMode?'• Ôn Chưa thuộc':'• '+({pprom:'PPROM',ptl:'CDSN',tsg:'TSG/Sản giật',gdm:'GDM'}[currentTopic]||currentTopic);
+ document.getElementById('quizModeLabel').textContent=examMode?'• Đề tổng hợp 60 câu':(reviewMode?'• Ôn Chưa thuộc':'• '+topicName(currentTopic));
  document.getElementById('quizProgress').style.width=((qi)/quizOrder.length*100)+'%';
  document.getElementById('quizQ').textContent=q.q;
  const wrap=document.getElementById('quizOptions');wrap.innerHTML='';
@@ -400,7 +444,7 @@ function answerQuiz(i,btn){
  if(locked)return;locked=true;stopTimer();
  const q=quizQuestion(),buttons=[...document.querySelectorAll('#quizOptions .option')];buttons[q.ans].classList.add('correct');
  const good=i===q.ans;if(!good)btn.classList.add('wrong');
- state.answered++;
+ state.answered++;if(examMode){examAnswered++;if(good)examCorrect++;}
  if(good){state.correct++;delete state.missed[q.id]}else markMissed(q,'Trả lời sai',q.opts[i]);
  const f=document.getElementById('quizFeedback');f.className='feedback show '+(good?'good':'bad');
  f.textContent=(good?'Đúng. ':'Chưa đúng. ')+q.why;
@@ -409,8 +453,15 @@ function answerQuiz(i,btn){
 function nextQuiz(){stopTimer();if(qi<quizOrder.length-1){qi++;renderQuiz()}else{qi++;renderQuizDone()}}
 function renderQuizDone(){
  stopTimer();document.getElementById('quizProgress').style.width='100%';document.getElementById('timerWrap').style.display='none';
- document.getElementById('quizCounter').textContent='Hoàn tất';document.getElementById('quizQ').textContent=reviewMode?'Đã ôn xong lượt Chưa thuộc.':'Hoàn tất bộ quiz.';
- document.getElementById('quizOptions').innerHTML='<div class="empty">Mở tab Chưa thuộc để xem những câu sai, hết giờ hoặc đã bỏ qua.</div>';
+ document.getElementById('quizCounter').textContent='Hoàn tất';
+ if(examMode){
+   const total=quizOrder.length||60,pct=Math.round((examCorrect/Math.max(1,total))*100);
+   document.getElementById('quizQ').textContent='Kết quả đề: '+examCorrect+'/'+total+' câu đúng ('+pct+'%).';
+   document.getElementById('quizOptions').innerHTML='<div class="empty">Mỗi lần bấm “Làm đề 60 câu” sẽ tạo một đề mới. Các câu sai, hết giờ hoặc bỏ qua đã được đưa vào Chưa thuộc.</div>';
+ }else{
+   document.getElementById('quizQ').textContent=reviewMode?'Đã ôn xong lượt Chưa thuộc.':'Hoàn tất bộ quiz.';
+   document.getElementById('quizOptions').innerHTML='<div class="empty">Mở tab Chưa thuộc để xem những câu sai, hết giờ hoặc đã bỏ qua.</div>';
+ }
  document.getElementById('quizFeedback').className='feedback';document.getElementById('nextQuizBtn').style.display='none';
 }
 
