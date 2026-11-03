@@ -146,7 +146,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   <div class="header-actions">
     <button class="iconbtn installbtn" id="installBtn" onclick="installApp()" title="Cài lên màn hình chính">📲 Cài app</button>
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v3.11 • Công đức</div>
+    <div class="pill">v3.12 • Đảo đáp án</div>
   </div>
 </header>
 
@@ -393,6 +393,7 @@ state.mokugyoCredits=Math.max(0,Math.floor(Number(state.mokugyoCredits)||0));
 state.merit=Math.max(0,Math.floor(Number(state.merit)||0));
 let flashOrder=DATA.flashcards.map((_,i)=>i),fi=0;
 let currentTopic='pprom',quizPool=[],quizOrder=[],qi=0,locked=false,reviewMode=false,examMode=false,examCorrect=0,examAnswered=0;
+let currentOptionOrder=[]; // displayed index -> original q.opts index
 let timerHandle=null,autoNextHandle=null,timeLeft=0,timeTotal=0;
 
 function save(){localStorage.setItem(STORE,JSON.stringify(state));updateMetrics();renderMissed()}
@@ -499,6 +500,15 @@ function startMissedReview(){
  examMode=false;examCorrect=0;examAnswered=0;quizPool=qs;quizOrder=quizPool.map((_,i)=>i);qi=0;reviewMode=true;go('quiz');renderQuiz();
 }
 function quizQuestion(){return quizPool[quizOrder[qi]]}
+function buildOptionOrder(q){
+ const a=q.opts.map((_,i)=>i);
+ for(let i=a.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
+}
+function displayedCorrectIndex(q){return currentOptionOrder.indexOf(q.ans)}
 
 function previewTimerSetting(v){
  const sec=Math.max(5,Math.min(40,parseInt(v,10)||30));
@@ -537,7 +547,7 @@ function markMissed(q,reason,chosen){
 }
 function timeoutQuestion(){
  if(locked)return;locked=true;const q=quizQuestion();state.answered++;if(examMode)examAnswered++;markMissed(q,'Hết giờ','Chưa chọn');
- document.querySelectorAll('#quizOptions .option')[q.ans].classList.add('correct');
+ document.querySelectorAll('#quizOptions .option')[displayedCorrectIndex(q)].classList.add('correct');
  const f=document.getElementById('quizFeedback');f.className='feedback show warn';f.textContent='Hết giờ → tính là chưa thuộc. '+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();
  autoNextHandle=setTimeout(()=>nextQuiz(),1500);
@@ -545,7 +555,7 @@ function timeoutQuestion(){
 function skipQuiz(){
  if(locked){nextQuiz();return}
  stopTimer();locked=true;const q=quizQuestion();state.answered++;if(examMode)examAnswered++;markMissed(q,'Bỏ qua','Chưa chọn');
- document.querySelectorAll('#quizOptions .option')[q.ans].classList.add('correct');
+ document.querySelectorAll('#quizOptions .option')[displayedCorrectIndex(q)].classList.add('correct');
  const f=document.getElementById('quizFeedback');f.className='feedback show warn';f.textContent='Bỏ qua → đã đưa vào Chưa thuộc. '+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();scheduleAutoNext();
 }
@@ -559,21 +569,26 @@ function renderQuiz(){
  document.getElementById('quizProgress').style.width=((qi)/quizOrder.length*100)+'%';
  document.getElementById('quizQ').textContent=q.q;
  const wrap=document.getElementById('quizOptions');wrap.innerHTML='';
- q.opts.forEach((o,i)=>{
-   const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+o;
-   b.onclick=()=>answerQuiz(i,b);wrap.appendChild(b);
+ currentOptionOrder=buildOptionOrder(q);
+ currentOptionOrder.forEach((originalIndex,displayIndex)=>{
+   const o=q.opts[originalIndex];
+   const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+displayIndex)+'. '+o;
+   b.onclick=()=>answerQuiz(displayIndex,b);wrap.appendChild(b);
  });
  const f=document.getElementById('quizFeedback');f.className='feedback';f.textContent='';
  document.getElementById('nextQuizBtn').style.display='none';
  document.getElementById('timerSelect').value=String(state.timer||30);previewTimerSetting(state.timer||30);
  startTimer();
 }
-function answerQuiz(i,btn){
+function answerQuiz(displayIndex,btn){
  if(locked)return;locked=true;stopTimer();
- const q=quizQuestion(),buttons=[...document.querySelectorAll('#quizOptions .option')];buttons[q.ans].classList.add('correct');
- const good=i===q.ans;if(!good)btn.classList.add('wrong');
+ const q=quizQuestion(),buttons=[...document.querySelectorAll('#quizOptions .option')];
+ const correctDisplayIndex=displayedCorrectIndex(q);
+ if(correctDisplayIndex>=0&&buttons[correctDisplayIndex])buttons[correctDisplayIndex].classList.add('correct');
+ const originalIndex=currentOptionOrder[displayIndex];
+ const good=originalIndex===q.ans;if(!good)btn.classList.add('wrong');
  state.answered++;if(examMode){examAnswered++;if(good)examCorrect++;}
- if(good){state.correct++;state.mokugyoCredits=(state.mokugyoCredits||0)+1;delete state.missed[q.id]}else markMissed(q,'Trả lời sai',q.opts[i]);
+ if(good){state.correct++;state.mokugyoCredits=(state.mokugyoCredits||0)+1;delete state.missed[q.id]}else markMissed(q,'Trả lời sai',q.opts[originalIndex]);
  const f=document.getElementById('quizFeedback');f.className='feedback show '+(good?'good':'bad');
  f.textContent=(good?'Đúng. +1 lượt gõ mõ 🔔  ':'Chưa đúng. ')+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();scheduleAutoNext();
@@ -768,5 +783,6 @@ initTheme();updateMetrics();renderFlash();buildQuizPool();renderQuiz();renderCas
 </script>
 <!-- force-pages-rebuild: v3.8.1 -->
 <!-- force-pages-rebuild: v3.11-merit -->
+<!-- force-pages-rebuild: v3.12-option-shuffle -->
 </body>
 </html>
