@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#3157d5">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OB Trainer">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -25,7 +32,10 @@ button,select{font:inherit}
 .shell{max-width:1040px;margin:auto;padding:20px}
 header{display:flex;gap:14px;align-items:center;justify-content:space-between;margin-bottom:18px}
 .brand h1{font-size:24px;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:14px}
-.header-actions{display:flex;align-items:center;gap:8px}
+.header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.installbtn{font-size:12px;font-weight:850;white-space:nowrap}
+.installbtn.ready{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent2)}
+.installbtn.installed{color:var(--good);background:var(--goodbg);border-color:var(--good)}
 .pill{background:var(--accent2);color:var(--accent);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
 .iconbtn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;padding:8px 11px;cursor:pointer}
 nav{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
@@ -134,8 +144,9 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
     <p>Active recall Sản khoa • Y6 • học nhanh, nhớ lâu</p>
   </div>
   <div class="header-actions">
+    <button class="iconbtn installbtn" id="installBtn" onclick="installApp()" title="Cài lên màn hình chính">📲 Cài app</button>
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v3.9 • Công đức</div>
+    <div class="pill">v3.10 • Cài app</div>
   </div>
 </header>
 
@@ -694,6 +705,64 @@ function leavePrayerPresence(){
 window.addEventListener('storage',e=>{if(e.key===PRAYER_PRESENCE_KEY)renderPrayerPresence()});
 window.addEventListener('pagehide',leavePrayerPresence);
 pulsePrayerPresence();setInterval(pulsePrayerPresence,5000);
+
+let deferredInstallPrompt=null;
+
+function appIsStandalone(){
+ return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+}
+
+function updateInstallButton(){
+ const b=document.getElementById('installBtn');if(!b)return;
+ if(appIsStandalone()){
+  b.textContent='✓ Đã cài';
+  b.classList.add('installed');
+  b.classList.remove('ready');
+  b.disabled=true;
+ }else{
+  b.disabled=false;
+  b.textContent='📲 Cài app';
+  b.classList.remove('installed');
+  b.classList.toggle('ready',!!deferredInstallPrompt);
+ }
+}
+
+window.addEventListener('beforeinstallprompt',e=>{
+ e.preventDefault();
+ deferredInstallPrompt=e;
+ updateInstallButton();
+});
+
+window.addEventListener('appinstalled',()=>{
+ deferredInstallPrompt=null;
+ updateInstallButton();
+});
+
+async function installApp(){
+ if(appIsStandalone()){updateInstallButton();return}
+ if(deferredInstallPrompt){
+  const prompt=deferredInstallPrompt;
+  deferredInstallPrompt=null;
+  prompt.prompt();
+  try{await prompt.userChoice}catch(e){}
+  updateInstallButton();
+  return;
+ }
+ const isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+ if(isiOS){
+  alert('Để cài app: mở trang bằng Safari → bấm nút Chia sẻ → chọn “Thêm vào Màn hình chính”.');
+ }else{
+  alert('Nếu hộp cài chưa hiện: mở menu ⋮ của Chrome → chọn “Cài đặt ứng dụng” hoặc “Thêm vào màn hình chính”. Sau khi tải lại trang, nút Cài app thường sẽ hiện hộp cài trực tiếp.');
+ }
+}
+
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>{
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+ });
+}
+
+updateInstallButton();
 
 initTheme();updateMetrics();renderFlash();buildQuizPool();renderQuiz();renderCases();renderMissed();
 </script>
