@@ -102,6 +102,28 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   .prayer-crowd{min-height:128px;gap:2px 5px}
 }
 
+
+/* ===== CÔNG ĐỨC / GÕ MÕ ===== */
+.merit-panel{margin:14px auto 4px;display:grid;grid-template-columns:repeat(2,minmax(125px,180px));justify-content:center;gap:8px 10px;position:relative;z-index:4}
+.merit-stat{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:800}
+.merit-stat b{font-size:22px;line-height:1}
+.mokugyo-btn{grid-column:1/-1;justify-self:center;width:180px;min-height:134px;border:0;background:transparent;cursor:pointer;position:relative;padding:9px 8px 4px;border-radius:22px;transition:transform .12s ease,filter .12s ease}
+.mokugyo-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.mokugyo-btn:active{transform:translateY(1px) scale(.97)}
+.mokugyo-btn.no-credit{opacity:.62;filter:grayscale(.22)}
+.woodfish{display:block;width:145px;margin:15px auto 0;transform-origin:50% 70%}
+.woodfish svg{width:100%;height:auto;filter:drop-shadow(0 9px 8px rgba(0,0,0,.18))}
+.mallet{position:absolute;z-index:3;font-size:43px;left:118px;top:1px;transform-origin:16% 85%;transform:rotate(-18deg)}
+.mokugyo-btn.strike .mallet{animation:malletHit .24s ease-out}
+.mokugyo-btn.strike .woodfish{animation:woodfishHit .28s ease-out}
+.mokugyo-caption{display:block;margin-top:-8px;font-size:13px;font-weight:900;color:var(--text)}
+.merit-hint{grid-column:1/-1;color:var(--muted);font-size:12px;font-weight:750;min-height:18px}
+.merit-pop{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);font-size:21px;font-weight:950;pointer-events:none;z-index:20;animation:meritFloat .85s ease-out forwards;text-shadow:0 2px 12px var(--card)}
+@keyframes malletHit{0%{transform:rotate(-18deg)}55%{transform:rotate(-58deg) translate(-7px,9px)}100%{transform:rotate(-18deg)}}
+@keyframes woodfishHit{0%,100%{transform:scale(1)}38%{transform:scale(.95) rotate(-2deg)}65%{transform:scale(1.035) rotate(1deg)}}
+@keyframes meritFloat{0%{opacity:0;transform:translate(-50%,10px) scale(.8)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-55px) scale(1.12)}}
+@media(max-width:560px){.merit-panel{grid-template-columns:repeat(2,minmax(112px,150px))}.mokugyo-btn{width:160px}.woodfish{width:128px}.mallet{left:107px;font-size:38px}}
+
 </style>
 </head>
 <body>
@@ -113,7 +135,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   </div>
   <div class="header-actions">
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v3.8.1 • Cầu qua môn</div>
+    <div class="pill">v3.9 • Công đức</div>
   </div>
 </header>
 
@@ -137,6 +159,40 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
       </div>
       <div class="prayer-message">“Nam mô... xin cho câu nào học rồi thì mai nhớ lại câu đó.”</div>
       <div class="online-pill"><span class="live-dot"></span> Đang cầu: <b id="prayerOnlineCount">1</b></div>
+
+      <div class="merit-panel">
+        <div class="merit-stat">
+          <span>🔔 Lượt gõ mõ</span>
+          <b id="mokugyoCredits">0</b>
+        </div>
+        <div class="merit-stat">
+          <span>✨ Công đức</span>
+          <b id="meritCount">0</b>
+        </div>
+        <button class="mokugyo-btn" id="mokugyoBtn" onclick="strikeMokugyo()" aria-label="Gõ mõ cầu qua môn">
+          <span class="mallet" aria-hidden="true">🔨</span>
+          <span class="woodfish" aria-hidden="true">
+            <svg viewBox="0 0 180 125">
+              <defs>
+                <linearGradient id="woodG" x1="0" x2="1">
+                  <stop offset="0" stop-color="#8f4b23"/>
+                  <stop offset=".5" stop-color="#c87837"/>
+                  <stop offset="1" stop-color="#7d3d1d"/>
+                </linearGradient>
+              </defs>
+              <path d="M18 68C21 34 51 15 91 17c43 2 70 21 72 53 2 27-20 40-69 40-47 0-79-12-76-42Z" fill="url(#woodG)" stroke="#4e2817" stroke-width="7"/>
+              <path d="M37 66c20-12 62-15 103-2" fill="none" stroke="#efb16f" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+              <path d="M58 45c24-10 52-9 74 1" fill="none" stroke="#5f2d18" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+              <ellipse cx="89" cy="82" rx="27" ry="13" fill="#3f2116"/>
+              <ellipse cx="89" cy="79" rx="17" ry="7" fill="#21120d"/>
+              <circle cx="37" cy="70" r="5" fill="#492417"/><circle cx="143" cy="69" r="5" fill="#492417"/>
+            </svg>
+          </span>
+          <span class="mokugyo-caption" id="mokugyoCaption">Gõ mõ</span>
+        </button>
+        <div class="merit-hint" id="meritHint">Mỗi câu Quiz đúng = +1 lượt gõ mõ = +1 công đức 🙏</div>
+      </div>
+
       <div class="prayer-crowd" id="prayerCrowd"></div>
       <div class="prayer-more" id="prayerMore"></div>
     </div>
@@ -318,8 +374,12 @@ cases:[
 };
 
 const STORE='ob_quick_trainer_v2';
-let state=JSON.parse(localStorage.getItem(STORE)||'null')||{known:{},missed:{},answered:0,correct:0,theme:null,timer:30};
+let state=JSON.parse(localStorage.getItem(STORE)||'null')||{known:{},missed:{},answered:0,correct:0,theme:null,timer:30,mokugyoCredits:0,merit:0};
 if(![5,10,15,20,25,30,35,40].includes(Number(state.timer))) state.timer=30;
+if(!Number.isFinite(Number(state.mokugyoCredits))) state.mokugyoCredits=0;
+if(!Number.isFinite(Number(state.merit))) state.merit=0;
+state.mokugyoCredits=Math.max(0,Math.floor(Number(state.mokugyoCredits)||0));
+state.merit=Math.max(0,Math.floor(Number(state.merit)||0));
 let flashOrder=DATA.flashcards.map((_,i)=>i),fi=0;
 let currentTopic='pprom',quizPool=[],quizOrder=[],qi=0,locked=false,reviewMode=false,examMode=false,examCorrect=0,examAnswered=0;
 let timerHandle=null,autoNextHandle=null,timeLeft=0,timeTotal=0;
@@ -350,9 +410,12 @@ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.ta
 function updateMetrics(){
  const vals={
   mKnown:DATA.flashcards.filter(c=>state.known[c.id]).length+'/'+DATA.flashcards.length,
-  mCorrect:state.correct,mAnswered:state.answered,mMissed:Object.keys(state.missed).length
+  mCorrect:state.correct,mAnswered:state.answered,mMissed:Object.keys(state.missed).length,
+  mokugyoCredits:state.mokugyoCredits||0,meritCount:state.merit||0
  };
  Object.entries(vals).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v});
+ const b=document.getElementById('mokugyoBtn');
+ if(b)b.classList.toggle('no-credit',(state.mokugyoCredits||0)<=0);
 }
 
 function renderFlash(){
@@ -499,9 +562,9 @@ function answerQuiz(i,btn){
  const q=quizQuestion(),buttons=[...document.querySelectorAll('#quizOptions .option')];buttons[q.ans].classList.add('correct');
  const good=i===q.ans;if(!good)btn.classList.add('wrong');
  state.answered++;if(examMode){examAnswered++;if(good)examCorrect++;}
- if(good){state.correct++;delete state.missed[q.id]}else markMissed(q,'Trả lời sai',q.opts[i]);
+ if(good){state.correct++;state.mokugyoCredits=(state.mokugyoCredits||0)+1;delete state.missed[q.id]}else markMissed(q,'Trả lời sai',q.opts[i]);
  const f=document.getElementById('quizFeedback');f.className='feedback show '+(good?'good':'bad');
- f.textContent=(good?'Đúng. ':'Chưa đúng. ')+q.why;
+ f.textContent=(good?'Đúng. +1 lượt gõ mõ 🔔  ':'Chưa đúng. ')+q.why;
  document.getElementById('nextQuizBtn').style.display='inline-block';save();scheduleAutoNext();
 }
 function nextQuiz(){stopTimer();if(qi<quizOrder.length-1){qi++;renderQuiz()}else{qi++;renderQuizDone()}}
@@ -544,6 +607,39 @@ function renderMissed(){
 }
 function clearMissed(){state.missed={};save()}
 
+
+let mokugyoAudioCtx=null;
+function playMokugyoSound(){
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  if(!mokugyoAudioCtx)mokugyoAudioCtx=new AC();
+  const ctx=mokugyoAudioCtx;
+  if(ctx.state==='suspended')ctx.resume();
+  const now=ctx.currentTime;
+  const osc=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
+  osc.type='sine';osc.frequency.setValueAtTime(620,now);osc.frequency.exponentialRampToValueAtTime(260,now+.075);
+  filter.type='bandpass';filter.frequency.value=520;filter.Q.value=2.8;
+  gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.42,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.16);
+  osc.connect(filter);filter.connect(gain);gain.connect(ctx.destination);osc.start(now);osc.stop(now+.18);
+ }catch(e){}
+}
+function popMerit(){
+ const panel=document.querySelector('.merit-panel');if(!panel)return;
+ const p=document.createElement('div');p.className='merit-pop';p.textContent='+1 công đức ✨';
+ panel.appendChild(p);setTimeout(()=>p.remove(),900);
+}
+function strikeMokugyo(){
+ const btn=document.getElementById('mokugyoBtn'),hint=document.getElementById('meritHint');
+ if((state.mokugyoCredits||0)<=0){
+  if(hint){hint.textContent='Hết lượt rồi 😭 Làm đúng Quiz để kiếm thêm lượt gõ mõ.';setTimeout(()=>hint.textContent='Mỗi câu Quiz đúng = +1 lượt gõ mõ = +1 công đức 🙏',1800)}
+  if(btn){btn.classList.remove('strike');void btn.offsetWidth;btn.classList.add('strike');setTimeout(()=>btn.classList.remove('strike'),300)}
+  return;
+ }
+ state.mokugyoCredits--;state.merit=(state.merit||0)+1;
+ if(btn){btn.classList.remove('strike');void btn.offsetWidth;btn.classList.add('strike');setTimeout(()=>btn.classList.remove('strike'),300)}
+ playMokugyoSound();popMerit();save();
+}
 
 const PRAYER_PRESENCE_KEY='ob_prayer_presence_v1';
 const prayerSessionId='pray_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8);
