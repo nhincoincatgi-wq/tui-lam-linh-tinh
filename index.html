@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preterm Labor Trainer</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#162033;--muted:#667085;--line:#e4e7ec;
+  --accent:#3157d5;--accent2:#eef2ff;--good:#067647;--bad:#b42318;--warn:#b54708;
+  --shadow:0 12px 32px rgba(16,24,40,.08)
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+button{font:inherit} .shell{max-width:980px;margin:auto;padding:20px}
+header{display:flex;gap:14px;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand h1{font-size:24px;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.pill{background:var(--accent2);color:var(--accent);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}
+nav{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
+nav button{border:1px solid var(--line);background:#fff;padding:11px 8px;border-radius:12px;cursor:pointer;color:var(--muted)}
+nav button.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.panel{display:none}.panel.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.metric .big{font-size:30px;font-weight:800;margin-top:8px}.muted{color:var(--muted)}
+.hero{padding:22px}.hero h2{margin:0 0 8px;font-size:22px}.hero p{margin:0;color:var(--muted);line-height:1.55}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{border:0;border-radius:12px;padding:11px 14px;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#fff}.btn.secondary{background:#fff;border:1px solid var(--line);color:var(--text)}
+.btn.good{background:#ecfdf3;color:var(--good)}.btn.bad{background:#fef3f2;color:var(--bad)}
+.progress{height:9px;background:#eaecf0;border-radius:999px;overflow:hidden}.progress>div{height:100%;background:var(--accent);width:0}
+.flash{min-height:310px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer}
+.flash .tag{font-size:12px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.flash h3{font-size:25px;line-height:1.35;max-width:700px}.flash .answer{display:none;color:#344054;line-height:1.65;max-width:760px}
+.flash.revealed .answer{display:block}.flash.revealed .prompt{display:none}
+.quiz-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.qtext{font-size:20px;font-weight:800;line-height:1.45;margin-bottom:16px}
+.options{display:grid;gap:10px}.option{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;cursor:pointer}
+.option:hover{border-color:#98a2b3}.option.correct{border-color:#6ce9a6;background:#ecfdf3}.option.wrong{border-color:#fda29b;background:#fef3f2}
+.feedback{margin-top:14px;padding:14px;border-radius:12px;background:#f8fafc;line-height:1.55;display:none}
+.feedback.show{display:block}.feedback.good{background:#ecfdf3;color:#065f46}.feedback.bad{background:#fef3f2;color:#912018}
+.case-list{display:grid;gap:14px}.case h3{margin-top:0}.case p{line-height:1.6}.case .reveal{display:none;margin-top:12px;padding:14px;border-radius:12px;background:#f8fafc;line-height:1.6}.case.open .reveal{display:block}
+.wrong-item{border-top:1px solid var(--line);padding:14px 0}.wrong-item:first-child{border-top:0}
+.small{font-size:13px}.source a{color:var(--accent);text-decoration:none}.source li{margin:8px 0;line-height:1.5}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}nav{grid-template-columns:repeat(3,1fr)}header{align-items:flex-start}.shell{padding:14px}.qtext{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+  <div class="brand">
+    <h1>Preterm Labor Trainer</h1>
+    <p>Ôn nhanh chuyển dạ sinh non • Y6 • học bằng active recall</p>
+  </div>
+  <div class="pill">v1.0</div>
+</header>
+
+<nav id="nav">
+  <button data-tab="home" class="active">Tổng quan</button>
+  <button data-tab="flashcards">Flashcard</button>
+  <button data-tab="quiz">Quiz</button>
+  <button data-tab="cases">Ca lâm sàng</button>
+  <button data-tab="wrong">Câu sai</button>
+</nav>
+
+<section id="home" class="panel active">
+  <div class="card hero">
+    <h2>Học theo vòng lặp ngắn</h2>
+    <p>Flashcard để dựng khung kiến thức → Quiz để kiểm tra nhớ thật → Ca lâm sàng để luyện quyết định → Câu sai để ôn đúng chỗ yếu. Tiến độ được lưu trên trình duyệt này.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="go('flashcards')">Bắt đầu Flashcard</button>
+      <button class="btn secondary" onclick="go('quiz')">Làm Quiz</button>
+    </div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card metric"><div class="muted">Flashcard đã nhớ</div><div class="big" id="mKnown">0</div></div>
+    <div class="card metric"><div class="muted">Quiz đúng</div><div class="big" id="mCorrect">0</div></div>
+    <div class="card metric"><div class="muted">Quiz đã làm</div><div class="big" id="mAnswered">0</div></div>
+    <div class="card metric"><div class="muted">Câu cần ôn</div><div class="big" id="mWrong">0</div></div>
+  </div>
+  <div class="card source" style="margin-top:12px">
+    <b>Nguồn kiểm tra cho bản v1</b>
+    <ul>
+      <li><a href="https://publications.smfm.org/publications/560-society-for-maternal-fetal-medicine-consult-series-70/" target="_blank" rel="noreferrer">SMFM Consult #70 — short cervix, 2024</a></li>
+      <li><a href="https://www.who.int/news/item/30-09-2022-new-recommendations-from-WHO-to-help-improve-the-health-of-preterm-birth" target="_blank" rel="noreferrer">WHO — preterm birth interventions / nifedipine update</a></li>
+      <li><a href="https://www.who.int/publications/i/item/9789240057296/" target="_blank" rel="noreferrer">WHO — antenatal corticosteroids, 2022</a></li>
+    </ul>
+    <div class="small muted">App phục vụ ôn tập. Khi xử trí bệnh nhân thật, ưu tiên phác đồ bệnh viện/Bộ Y tế hiện hành.</div>
+  </div>
+</section>
+
+<section id="flashcards" class="panel">
+  <div class="quiz-head">
+    <div><b id="fcCounter">1/1</b> <span class="muted small">• bấm thẻ để lật</span></div>
+    <button class="btn secondary" onclick="shuffleFlashcards()">Trộn thẻ</button>
+  </div>
+  <div class="progress"><div id="fcProgress"></div></div>
+  <div class="card flash" id="flashCard" onclick="revealFlash()">
+    <div class="tag" id="fcTag"></div>
+    <div class="prompt"><h3 id="fcQ"></h3><div class="muted">Chạm để xem đáp án</div></div>
+    <div class="answer" id="fcA"></div>
+  </div>
+  <div class="actions" style="justify-content:center">
+    <button class="btn bad" onclick="rateFlash(false,event)">Chưa nhớ</button>
+    <button class="btn good" onclick="rateFlash(true,event)">Nhớ rồi</button>
+    <button class="btn secondary" onclick="nextFlash(event)">Bỏ qua</button>
+  </div>
+</section>
+
+<section id="quiz" class="panel">
+  <div class="quiz-head">
+    <div><b id="quizCounter">Câu 1</b></div>
+    <button class="btn secondary" onclick="restartQuiz()">Làm lại</button>
+  </div>
+  <div class="progress"><div id="quizProgress"></div></div>
+  <div class="card">
+    <div class="qtext" id="quizQ"></div>
+    <div class="options" id="quizOptions"></div>
+    <div class="feedback" id="quizFeedback"></div>
+    <div class="actions"><button id="nextQuizBtn" class="btn primary" style="display:none" onclick="nextQuiz()">Câu tiếp</button></div>
+  </div>
+</section>
+
+<section id="cases" class="panel">
+  <div class="card hero" style="margin-bottom:12px">
+    <h2>Ca lâm sàng</h2>
+    <p>Tự trả lời thành tiếng trước khi mở đáp án. Mục tiêu là nói được: chẩn đoán → việc cần làm ngay → thuốc nào nhằm mục tiêu gì.</p>
+  </div>
+  <div class="case-list" id="caseList"></div>
+</section>
+
+<section id="wrong" class="panel">
+  <div class="card">
+    <div class="quiz-head"><div><b>Ngân hàng câu sai</b></div><button class="btn secondary" onclick="clearWrong()">Xóa lịch sử sai</button></div>
+    <div id="wrongList"></div>
+  </div>
+</section>
+
+<footer>Preterm Labor Trainer • dữ liệu học lưu cục bộ trên trình duyệt</footer>
+</div>
+
+<script>
+const DATA = {
+flashcards:[
+ {id:'f1',tag:'Chẩn đoán',q:'Điểm cốt lõi để gọi là chuyển dạ sinh non là gì?',a:'Cơn co tử cung kèm thay đổi cổ tử cung (xóa/mở) trước đủ tháng. Chỉ có cơn gò nhưng cổ tử cung không thay đổi chưa đủ để gọi là chuyển dạ thực sự.'},
+ {id:'f2',tag:'Mục tiêu điều trị',q:'Thuốc giảm gò dùng để làm gì?',a:'Mục tiêu chủ yếu là trì hoãn sinh ngắn hạn để có thời gian hoàn tất can thiệp có lợi cho thai (đặc biệt corticosteroid) hoặc chuyển sản phụ đến cơ sở phù hợp; không phải duy trì thai đến đủ tháng.'},
+ {id:'f3',tag:'Corticosteroid',q:'Corticosteroid trước sinh nhằm mục tiêu gì?',a:'Giảm bệnh suất và tử suất sơ sinh do non tháng bằng cách thúc đẩy trưởng thành cơ quan, nổi bật là phổi, khi nguy cơ sinh non gần.'},
+ {id:'f4',tag:'MgSO₄',q:'MgSO₄ trước sinh non sớm nhằm mục tiêu gì?',a:'Bảo vệ thần kinh thai, làm giảm nguy cơ bại não ở trẻ sinh rất non trong các tình huống phù hợp; không phải thuốc trưởng thành phổi.'},
+ {id:'f5',tag:'Dự phòng',q:'Thai đơn, không tiền sử sinh non, cổ tử cung ≤20 mm trước 24 tuần: nghĩ gì?',a:'SMFM khuyến cáo progesterone âm đạo để giảm nguy cơ sinh non. Chiều dài cổ tử cung dùng cho quyết định điều trị nên đo bằng siêu âm đầu dò âm đạo.'},
+ {id:'f6',tag:'Dự phòng',q:'Ngưỡng cổ tử cung ngắn giữa thai kỳ ở thai đơn không tiền sử sinh non theo SMFM?',a:'≤25 mm.'},
+ {id:'f7',tag:'Dự phòng',q:'17-OHPC còn được khuyến cáo cho cổ tử cung ngắn không?',a:'Không. SMFM khuyến cáo không kê 17-alpha hydroxyprogesterone caproate để điều trị cổ tử cung ngắn.'},
+ {id:'f8',tag:'Dự phòng',q:'Pessary cổ tử cung có dùng thường quy cho thai đơn cổ tử cung ngắn không?',a:'Không. SMFM khuyến cáo không đặt pessary thường quy để phòng sinh non trong nhóm này.'},
+ {id:'f9',tag:'Nhiễm trùng',q:'Chuỗi cơ chế nhiễm trùng đi lên có thể dẫn đến sinh non?',a:'Vi khuẩn → hoạt hóa viêm tại màng rụng/màng ối → cytokine/prostaglandin và protease → tăng co tử cung, chín cổ tử cung và suy yếu màng ối.'},
+ {id:'f10',tag:'Kháng sinh',q:'Chuyển dạ sinh non, màng ối còn nguyên, không dấu nhiễm trùng: kháng sinh thường quy?',a:'Không dùng kháng sinh thường quy chỉ vì có chuyển dạ sinh non nếu màng ối còn nguyên và không có dấu nhiễm trùng.'},
+ {id:'f11',tag:'Tocolysis',q:'Nifedipine nằm ở đâu trong chiến lược giảm gò?',a:'WHO 2022 khuyến cáo nifedipine cho giảm gò trong các trường hợp phù hợp khi khả năng sinh non cao và trì hoãn sinh mang lại lợi ích.'},
+ {id:'f12',tag:'Sai lầm hay gặp',q:'Nằm nghỉ tuyệt đối có phòng sinh non không?',a:'Không được khuyến cáo thường quy. Bất động kéo dài không chứng minh lợi ích dự phòng và có thể gây tác hại.'}
+],
+quiz:[
+ {id:'q1',q:'Sản phụ 31 tuần có cơn gò đều. Yếu tố nào quan trọng nhất để phân biệt chuyển dạ sinh non thực sự với chỉ có cơn gò sinh non?',opts:['Có đau bụng dưới','Có thay đổi cổ tử cung','Thai máy nhiều','Có khí hư âm đạo'],ans:1,why:'Chuyển dạ sinh non cần cơn co gắn với thay đổi cổ tử cung như xóa hoặc mở.'},
+ {id:'q2',q:'Thai 30 tuần, chuyển dạ sinh non và có khả năng sinh trong vòng 7 ngày. Can thiệp nào có mục tiêu chính là thúc đẩy trưởng thành các cơ quan của thai trước sinh?',opts:['Corticosteroid trước sinh','Magnesium sulfate','Nifedipine','Kháng sinh thường quy'],ans:0,why:'Corticosteroid trước sinh làm giảm biến chứng non tháng bằng cách thúc đẩy trưởng thành cơ quan, nổi bật là phổi.'},
+ {id:'q3',q:'Thai phụ 29 tuần dự kiến có khả năng sinh trong 24 giờ. Mục tiêu chính của magnesium sulfate trong tình huống này là gì?',opts:['Làm trưởng thành phổi thai','Dự phòng nhiễm khuẩn sơ sinh','Bảo vệ thần kinh thai, giảm nguy cơ bại não','Duy trì thai thêm nhiều tuần'],ans:2,why:'MgSO₄ trong sinh non sớm được dùng cho neuroprotection, không phải trưởng thành phổi.'},
+ {id:'q4',q:'Mục tiêu thực tế nhất của thuốc giảm gò trong chuyển dạ sinh non là gì?',opts:['Ngăn sinh non hoàn toàn đến đủ tháng','Trì hoãn sinh ngắn hạn để hoàn tất điều trị có lợi cho thai hoặc chuyển viện','Điều trị nhiễm khuẩn trong tử cung','Làm tăng cân thai nhanh trước sinh'],ans:1,why:'Tocolysis chủ yếu mua một khoảng thời gian ngắn cho corticosteroid/chuyển viện khi phù hợp.'},
+ {id:'q5',q:'Thai phụ 32 tuần có nhiều cơn gò nhưng khám lặp lại không ghi nhận thay đổi cổ tử cung. Nguyên tắc phù hợp nhất?',opts:['Luôn dùng thuốc giảm gò ngay','Đánh giá nguyên nhân và nguy cơ, không mặc định dùng giảm gò','Chỉ định mổ lấy thai','Khâu vòng cổ tử cung cấp cứu cho mọi trường hợp'],ans:1,why:'Cơn gò không kèm thay đổi cổ tử cung chưa đủ để coi là chuyển dạ sinh non thực sự.'},
+ {id:'q6',q:'Thai đơn, không tiền sử sinh non tự phát, siêu âm đầu dò âm đạo trước 24 tuần: cổ tử cung 18 mm. Biện pháp dự phòng nào phù hợp?',opts:['Progesterone đặt âm đạo','17-OH progesterone caproate tiêm','Khâu vòng cổ tử cung thường quy','Nằm nghỉ tuyệt đối'],ans:0,why:'SMFM khuyến cáo progesterone âm đạo khi cổ tử cung ≤20 mm trước 24 tuần ở nhóm này.'},
+ {id:'q7',q:'Ở thai đơn không có tiền sử sinh non tự phát, ngưỡng chiều dài cổ tử cung giữa thai kỳ dùng để chẩn đoán cổ tử cung ngắn theo SMFM là:',opts:['≤15 mm','≤20 mm','≤25 mm','≤30 mm'],ans:2,why:'SMFM dùng ngưỡng ≤25 mm để chẩn đoán cổ tử cung ngắn trong nhóm này.'},
+ {id:'q8',q:'Biện pháp nào KHÔNG được khuyến cáo thường quy để dự phòng sinh non ở thai đơn có cổ tử cung ngắn nhưng không có tiền sử sinh non và không mở cổ tử cung?',opts:['Đo chiều dài cổ tử cung bằng siêu âm đầu dò','Progesterone âm đạo khi ≤20 mm trước 24 tuần','Pessary cổ tử cung thường quy','Theo dõi và đánh giá nguy cơ'],ans:2,why:'SMFM khuyến cáo không đặt pessary cổ tử cung thường quy trong thai đơn có cổ tử cung ngắn.'},
+ {id:'q9',q:'Trong cơ chế sinh non do nhiễm trùng đi lên, chất trung gian nào góp phần thúc đẩy co tử cung và chín cổ tử cung?',opts:['Prostaglandin và các chất trung gian viêm','Insulin đơn thuần','Thyroxine đơn thuần','Erythropoietin đơn thuần'],ans:0,why:'Viêm do nhiễm trùng làm tăng prostaglandin và các đường viêm, góp phần khởi phát chuyển dạ.'},
+ {id:'q10',q:'Chuyển dạ sinh non, màng ối còn nguyên, không có dấu nhiễm trùng. Nhận định phù hợp nhất về kháng sinh?',opts:['Luôn dùng kháng sinh phổ rộng','Không dùng kháng sinh thường quy chỉ vì chuyển dạ sinh non','Kháng sinh thay thế corticosteroid','Kháng sinh thay thế thuốc giảm gò'],ans:1,why:'Kháng sinh không được dùng thường quy trong chuyển dạ sinh non với màng ối nguyên và không có dấu nhiễm trùng.'}
+],
+cases:[
+ {title:'Ca 1 — Gò hay chuyển dạ?',stem:'Thai 31+2 tuần, gò 3 cơn/10 phút, đau bụng dưới nhẹ. Cổ tử cung lần đầu 1 cm; sau theo dõi không thay đổi. Màng ối còn.',ask:'Em cần phân biệt điều gì trước khi vội cho thuốc giảm gò?',answer:'Trước hết phải xác định đây có phải chuyển dạ sinh non thực sự hay chỉ có cơn gò. Trọng tâm là diễn tiến cổ tử cung và toàn bộ bối cảnh lâm sàng. Không nên mặc định “có gò = phải giảm gò”.'},
+ {title:'Ca 2 — Ba thuốc, ba mục tiêu',stem:'Thai 29 tuần, chuyển dạ sinh non tiến triển, nguy cơ sinh sớm cao. Không có chống chỉ định rõ với trì hoãn sinh ngắn hạn.',ask:'Hãy nói thành tiếng mục tiêu của corticosteroid, MgSO₄ và thuốc giảm gò.',answer:'Corticosteroid: trưởng thành cơ quan thai/giảm biến chứng non tháng. MgSO₄: bảo vệ thần kinh thai trong sinh non sớm phù hợp. Tocolytic: trì hoãn sinh ngắn hạn để các can thiệp có lợi phát huy tác dụng hoặc chuyển viện.'},
+ {title:'Ca 3 — Cổ tử cung ngắn',stem:'Thai đơn 22 tuần, không tiền sử sinh non tự phát, không triệu chứng. Siêu âm đầu dò âm đạo: cổ tử cung 18 mm, không mở.',ask:'Biện pháp dự phòng chính em nghĩ đến là gì? Có khâu vòng thường quy không?',answer:'Progesterone âm đạo là biện pháp dự phòng được SMFM khuyến cáo khi CL ≤20 mm trước 24 tuần. Ở người không có tiền sử sinh non, CL 10–25 mm nhưng không mở cổ tử cung: không khuyến cáo cerclage thường quy.'},
+ {title:'Ca 4 — Nhiễm trùng và sinh non',stem:'Một thai phụ có nguy cơ sinh non trong bối cảnh nhiễm trùng đường sinh dục đi lên.',ask:'Hãy kể chuỗi cơ chế theo 4 mắt xích.',answer:'Vi khuẩn đi lên → đáp ứng viêm tại mô mẹ–thai → tăng cytokine/prostaglandin/protease → co tử cung + chín cổ tử cung + suy yếu màng ối, từ đó thúc đẩy sinh non.'}
+]
+};
+
+const STORE='ptl_trainer_v1';
+let state=JSON.parse(localStorage.getItem(STORE)||'null')||{known:{},wrong:{},answered:0,correct:0};
+let flashOrder=DATA.flashcards.map((_,i)=>i),fi=0;
+let quizOrder=DATA.quiz.map((_,i)=>i),qi=0,locked=false;
+
+function save(){localStorage.setItem(STORE,JSON.stringify(state));updateMetrics();renderWrong()}
+function go(tab){
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(tab).classList.add('active');
+ document.querySelector('nav button[data-tab="'+tab+'"]').classList.add('active');
+ if(tab==='wrong') renderWrong();
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+
+function updateMetrics(){
+ document.getElementById('mKnown').textContent=Object.keys(state.known).length+'/'+DATA.flashcards.length;
+ document.getElementById('mCorrect').textContent=state.correct;
+ document.getElementById('mAnswered').textContent=state.answered;
+ document.getElementById('mWrong').textContent=Object.keys(state.wrong).length;
+}
+
+function renderFlash(){
+ const c=DATA.flashcards[flashOrder[fi]];
+ const el=document.getElementById('flashCard');el.classList.remove('revealed');
+ document.getElementById('fcTag').textContent=c.tag;
+ document.getElementById('fcQ').textContent=c.q;
+ document.getElementById('fcA').textContent=c.a;
+ document.getElementById('fcCounter').textContent=(fi+1)+'/'+flashOrder.length;
+ document.getElementById('fcProgress').style.width=((fi+1)/flashOrder.length*100)+'%';
+}
+function revealFlash(){document.getElementById('flashCard').classList.add('revealed')}
+function nextFlash(e){if(e)e.stopPropagation();fi=(fi+1)%flashOrder.length;renderFlash()}
+function rateFlash(ok,e){
+ if(e)e.stopPropagation(); const c=DATA.flashcards[flashOrder[fi]];
+ if(ok) state.known[c.id]=true; else delete state.known[c.id];
+ save();nextFlash(e);
+}
+function shuffleFlashcards(){flashOrder.sort(()=>Math.random()-.5);fi=0;renderFlash()}
+
+function renderQuiz(){
+ const q=DATA.quiz[quizOrder[qi]]; locked=false;
+ document.getElementById('quizCounter').textContent='Câu '+(qi+1)+'/'+quizOrder.length;
+ document.getElementById('quizProgress').style.width=((qi)/quizOrder.length*100)+'%';
+ document.getElementById('quizQ').textContent=q.q;
+ const wrap=document.getElementById('quizOptions');wrap.innerHTML='';
+ q.opts.forEach((o,i)=>{
+   const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+o;
+   b.onclick=()=>answerQuiz(i,b);wrap.appendChild(b);
+ });
+ const f=document.getElementById('quizFeedback');f.className='feedback';f.textContent='';
+ document.getElementById('nextQuizBtn').style.display='none';
+}
+function answerQuiz(i,btn){
+ if(locked)return; locked=true;
+ const q=DATA.quiz[quizOrder[qi]], buttons=[...document.querySelectorAll('#quizOptions .option')];
+ buttons[q.ans].classList.add('correct');
+ const good=i===q.ans;
+ if(!good) btn.classList.add('wrong');
+ state.answered++; if(good){state.correct++;delete state.wrong[q.id]}else{state.wrong[q.id]={q:q.q,chosen:q.opts[i],correct:q.opts[q.ans],why:q.why}}
+ const f=document.getElementById('quizFeedback');f.className='feedback show '+(good?'good':'bad');
+ f.textContent=(good?'Đúng. ':'Chưa đúng. ')+q.why;
+ document.getElementById('nextQuizBtn').style.display='inline-block';
+ save();
+}
+function nextQuiz(){
+ if(qi<quizOrder.length-1){qi++;renderQuiz()}
+ else{
+  document.getElementById('quizProgress').style.width='100%';
+  document.getElementById('quizQ').textContent='Hoàn tất vòng quiz.';
+  document.getElementById('quizOptions').innerHTML='<div class="empty">Mở tab Câu sai để ôn lại đúng những điểm em vừa vấp.</div>';
+  document.getElementById('quizFeedback').className='feedback';
+  document.getElementById('nextQuizBtn').style.display='none';
+ }
+}
+function restartQuiz(){quizOrder.sort(()=>Math.random()-.5);qi=0;renderQuiz()}
+
+function renderCases(){
+ const wrap=document.getElementById('caseList');wrap.innerHTML='';
+ DATA.cases.forEach((c,i)=>{
+   const d=document.createElement('div');d.className='card case';
+   d.innerHTML='<h3>'+c.title+'</h3><p>'+c.stem+'</p><p><b>Câu hỏi:</b> '+c.ask+'</p><button class="btn secondary">Mở đáp án</button><div class="reveal"><b>Gợi ý trả lời:</b><br>'+c.answer+'</div>';
+   d.querySelector('button').onclick=()=>{d.classList.toggle('open');d.querySelector('button').textContent=d.classList.contains('open')?'Ẩn đáp án':'Mở đáp án'};
+   wrap.appendChild(d);
+ });
+}
+function renderWrong(){
+ const wrap=document.getElementById('wrongList'), arr=Object.values(state.wrong);
+ if(!arr.length){wrap.innerHTML='<div class="empty">Chưa có câu sai nào. Làm quiz trước nhé.</div>';return}
+ wrap.innerHTML='';
+ arr.forEach(x=>{
+   const d=document.createElement('div');d.className='wrong-item';
+   d.innerHTML='<b>'+x.q+'</b><div class="small" style="margin-top:8px;color:var(--bad)">Em chọn: '+x.chosen+'</div><div class="small" style="margin-top:5px;color:var(--good)">Đáp án: '+x.correct+'</div><div class="small muted" style="margin-top:7px">'+x.why+'</div>';
+   wrap.appendChild(d);
+ });
+}
+function clearWrong(){state.wrong={};save()}
+
+updateMetrics();renderFlash();renderQuiz();renderCases();renderWrong();
+</script>
+</body>
+</html>
