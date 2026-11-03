@@ -49,6 +49,9 @@ html[data-theme="dark"] .btn.primary{color:#08111f}
 .controls{display:grid;grid-template-columns:1.15fr 1fr auto auto;gap:10px;align-items:end;margin-bottom:14px}
 .field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px}
 .field select{width:100%;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px}
+.field input[type="range"]{width:100%;accent-color:var(--accent);cursor:pointer;margin:7px 0 2px}
+.range-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}
+.range-value{font-size:13px;font-weight:800;color:var(--accent)}
 .flash{min-height:310px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer}
 .flash .tag{font-size:12px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .flash h3{font-size:25px;line-height:1.35;max-width:700px}.flash .answer{display:none;color:var(--text);line-height:1.65;max-width:760px}
@@ -77,7 +80,7 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   </div>
   <div class="header-actions">
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v2.6 • U xơ 50</div>
+    <div class="pill">v2.7 • Timer 5–40s</div>
   </div>
 </header>
 
@@ -141,14 +144,10 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
       </select>
     </div>
     <div class="field">
-      <label>Tự chuyển / giới hạn mỗi câu</label>
-      <select id="timerSelect" onchange="changeTimerSetting(this.value)">
-        <option value="0">Tắt</option>
-        <option value="15">15 giây</option>
-        <option value="30" selected>30 giây</option>
-        <option value="45">45 giây</option>
-        <option value="60">60 giây</option>
-      </select>
+      <label>Thời gian mỗi câu: <span class="range-value" id="timerSettingValue">30 giây</span></label>
+      <input id="timerSelect" type="range" min="5" max="40" step="5" value="30"
+             oninput="previewTimerSetting(this.value)" onchange="changeTimerSetting(this.value)">
+      <div class="range-meta"><span>5s</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30</span><span>35</span><span>40s</span></div>
     </div>
     <button class="btn secondary full-mobile" onclick="restartQuiz()">Trộn & làm lại</button>
     <button class="btn primary full-mobile" onclick="startExam()">Làm đề 60 câu</button>
@@ -282,6 +281,7 @@ cases:[
 
 const STORE='ob_quick_trainer_v2';
 let state=JSON.parse(localStorage.getItem(STORE)||'null')||{known:{},missed:{},answered:0,correct:0,theme:null,timer:30};
+if(![5,10,15,20,25,30,35,40].includes(Number(state.timer))) state.timer=30;
 let flashOrder=DATA.flashcards.map((_,i)=>i),fi=0;
 let currentTopic='pprom',quizPool=[],quizOrder=[],qi=0,locked=false,reviewMode=false,examMode=false,examCorrect=0,examAnswered=0;
 let timerHandle=null,autoNextHandle=null,timeLeft=0,timeTotal=0;
@@ -387,8 +387,13 @@ function startMissedReview(){
 }
 function quizQuestion(){return quizPool[quizOrder[qi]]}
 
+function previewTimerSetting(v){
+ const sec=Math.max(5,Math.min(40,parseInt(v,10)||30));
+ const el=document.getElementById('timerSettingValue');if(el)el.textContent=sec+' giây';
+}
 function changeTimerSetting(v){
- state.timer=parseInt(v,10)||0;save();
+ const sec=Math.max(5,Math.min(40,parseInt(v,10)||30));
+ state.timer=sec;previewTimerSetting(sec);save();
  if(document.getElementById('quiz').classList.contains('active')&&!locked)startTimer();
 }
 function stopTimer(){if(timerHandle){clearInterval(timerHandle);timerHandle=null}if(autoNextHandle){clearTimeout(autoNextHandle);autoNextHandle=null}}
@@ -441,7 +446,7 @@ function renderQuiz(){
  });
  const f=document.getElementById('quizFeedback');f.className='feedback';f.textContent='';
  document.getElementById('nextQuizBtn').style.display='none';
- document.getElementById('timerSelect').value=String(state.timer||0);
+ document.getElementById('timerSelect').value=String(state.timer||30);previewTimerSetting(state.timer||30);
  startTimer();
 }
 function answerQuiz(i,btn){
