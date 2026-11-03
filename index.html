@@ -69,6 +69,39 @@ html[data-theme="dark"] .btn.primary{color:#08111f}
 .notice{border-left:4px solid var(--accent);background:var(--card2);padding:12px 14px;border-radius:10px;line-height:1.55}
 footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}nav{grid-template-columns:repeat(3,1fr)}header{align-items:flex-start}.shell{padding:14px}.qtext{font-size:18px}.controls{grid-template-columns:1fr 1fr}.controls .full-mobile{grid-column:1/-1}}
+
+/* ===== CẦU QUA MÔN ===== */
+.prayer-shell{max-width:980px;margin:0 auto;text-align:center}
+.prayer-title{font-size:clamp(28px,5vw,48px);font-weight:950;letter-spacing:.06em;margin:4px 0 6px}
+.prayer-sub{color:var(--muted);margin-bottom:14px;font-weight:700}
+.prayer-stage{position:relative;overflow:hidden;min-height:610px;border:1px solid var(--line);border-radius:24px;background:
+ radial-gradient(circle at 50% 24%,rgba(255,215,84,.24),transparent 30%),
+ linear-gradient(180deg,var(--card2),var(--card));padding:18px 14px 24px;box-shadow:0 18px 50px rgba(0,0,0,.08)}
+.wisdom-label{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px}
+.buddha-wrap{display:flex;justify-content:center;position:relative;z-index:1}
+.buddha-img{width:min(310px,70vw);aspect-ratio:1/1;object-fit:cover;object-position:center;border-radius:24px;box-shadow:0 0 0 1px rgba(255,215,84,.3),0 18px 50px rgba(218,160,20,.22)}
+.prayer-message{margin:14px auto 8px;max-width:680px;font-weight:850;font-size:clamp(15px,2.5vw,20px)}
+.online-pill{display:inline-flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:14px;font-weight:800}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#36c96b;box-shadow:0 0 0 0 rgba(54,201,107,.5);animation:livePulse 1.6s infinite}
+@keyframes livePulse{70%{box-shadow:0 0 0 9px rgba(54,201,107,0)}100%{box-shadow:0 0 0 0 rgba(54,201,107,0)}}
+.prayer-crowd{min-height:155px;display:flex;align-items:flex-end;justify-content:center;flex-wrap:wrap;gap:4px 9px;margin-top:8px;position:relative;z-index:2}
+.prayer-person{width:82px;height:112px;display:flex;align-items:flex-end;justify-content:center;transform-origin:50% 100%;animation:kowtow 2.7s cubic-bezier(.45,0,.25,1) infinite;animation-delay:var(--d,0s);will-change:transform}
+.prayer-person svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 5px 4px rgba(0,0,0,.12))}
+@keyframes kowtow{
+  0%,18%,100%{transform:perspective(280px) rotateX(0deg) translateY(0) scale(1)}
+  38%{transform:perspective(280px) rotateX(24deg) translateY(8px) scale(.99)}
+  58%,68%{transform:perspective(280px) rotateX(63deg) translateY(26px) scale(.96)}
+  84%{transform:perspective(280px) rotateX(22deg) translateY(7px) scale(.99)}
+}
+.prayer-more{font-size:13px;color:var(--muted);font-weight:800;min-height:20px}
+.prayer-note{font-size:12px;color:var(--muted);margin:10px auto 0;max-width:720px;line-height:1.5}
+@media(max-width:560px){
+  .prayer-stage{min-height:560px;padding-left:8px;padding-right:8px}
+  .buddha-img{width:min(250px,72vw)}
+  .prayer-person{width:64px;height:90px}
+  .prayer-crowd{min-height:128px;gap:2px 5px}
+}
+
 </style>
 </head>
 <body>
@@ -80,12 +113,12 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
   </div>
   <div class="header-actions">
     <button class="iconbtn" id="themeBtn" onclick="toggleTheme()" title="Đổi giao diện">🌙</button>
-    <div class="pill">v3.7 • Flashcard Khám thai</div>
+    <div class="pill">v3.8 • Cầu qua môn</div>
   </div>
 </header>
 
 <nav>
-  <button data-tab="home" class="active">Tổng quan</button>
+  <button data-tab="home" class="active">Cầu qua môn</button>
   <button data-tab="flashcards">Flashcard</button>
   <button data-tab="quiz">Quiz</button>
   <button data-tab="cases">Ca lâm sàng</button>
@@ -93,22 +126,22 @@ footer{padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
 </nav>
 
 <section id="home" class="panel active">
-  <div class="card hero">
-    <h2>Ôn theo vòng lặp ngắn</h2>
-    <p>Quiz PPROM hiện có 50 câu bám mục “13. Ối Vỡ Non Trên Thai Non Tháng (PPROM)” trong file học. Câu sai hoặc hết giờ được tự động đưa vào “Chưa thuộc”.</p>
-    <div class="actions">
-      <button class="btn primary" onclick="startTopic('pprom')">Làm 50 câu PPROM</button>
-      <button class="btn secondary" onclick="startTopic('ptl')">Làm 50 câu CDSN</button><button class="btn secondary" onclick="startTopic('tsg')">Làm 50 câu TSG</button><button class="btn secondary" onclick="startTopic('gdm')">Làm 50 câu GDM</button><button class="btn secondary" onclick="startTopic('tntc')">Làm 30 câu TNTC</button><button class="btn secondary" onclick="startTopic('ux')">Làm 50 câu U xơ</button><button class="btn secondary" onclick="startTopic('aden')">Làm 40 câu Adenomyosis</button><button class="btn secondary" onclick="startTopic('ubt')">Làm 45 câu UBT</button><button class="btn secondary" onclick="startTopic('suythai')">Làm 50 câu Suy thai</button><button class="btn secondary" onclick="startTopic('gtd')">Làm 45 câu GTD/GTN</button><button class="btn secondary" onclick="startTopic('tsnm')">Làm 40 câu TSNMTC</button><button class="btn secondary" onclick="startTopic('fgr')">Làm 40 câu FGR</button><button class="btn secondary" onclick="startTopic('xh3')">Làm 50 câu XH 3 tháng cuối</button><button class="btn secondary" onclick="startTopic('cdt')">Làm 40 câu Tắc nghẽn</button><button class="btn secondary" onclick="startTopic('tolac')">Làm 40 câu TOLAC/VBAC</button><button class="btn primary" onclick="startExam()">Làm đề tổng hợp 60 câu</button><button class="btn secondary" onclick="go('flashcards')">Ôn flashcard Khám thai</button>
+  <div class="prayer-shell">
+    <div class="prayer-title">🙏 CẦU QUA MÔN 🙏</div>
+    <div class="prayer-sub">Ai đang mở app cũng phải góp một lạy.</div>
+
+    <div class="prayer-stage">
+      <div class="wisdom-label">Văn Thù Sư Lợi Bồ Tát • biểu tượng trí tuệ</div>
+      <div class="buddha-wrap">
+        <img class="buddha-img" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Bodhisattva_Manjushri_as_Tikshna-Manjushri_%28Minjie_Wenshu%29_MET_DP164061.jpg" alt="Văn Thù Sư Lợi Bồ Tát">
+      </div>
+      <div class="prayer-message">“Nam mô... xin cho câu nào học rồi thì mai nhớ lại câu đó.”</div>
+      <div class="online-pill"><span class="live-dot"></span> Đang cầu: <b id="prayerOnlineCount">1</b></div>
+      <div class="prayer-crowd" id="prayerCrowd"></div>
+      <div class="prayer-more" id="prayerMore"></div>
     </div>
-  </div>
-  <div class="grid" style="margin-top:12px">
-    <div class="card metric"><div class="muted">Flashcard đã nhớ</div><div class="big" id="mKnown">0</div></div>
-    <div class="card metric"><div class="muted">Quiz đúng</div><div class="big" id="mCorrect">0</div></div>
-    <div class="card metric"><div class="muted">Quiz đã làm</div><div class="big" id="mAnswered">0</div></div>
-    <div class="card metric"><div class="muted">Chưa thuộc</div><div class="big" id="mMissed">0</div></div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <div class="notice"><b>Độ phủ PPROM:</b> 50 câu hiện tại đã phủ toàn bộ các ý được nêu rõ trong mục 13 của file: khái niệm, triệu chứng, mỏ vịt, 3 test, 3 chẩn đoán phân biệt, biện luận nhiễm trùng ối và toàn bộ phác đồ dưỡng thai/thuốc/liều. Nếu muốn luyện ra quyết định lâm sàng sâu hơn, nên bổ sung khoảng <b>20 ca tình huống</b> sau khi em thuộc bộ 50 câu này.</div>
+
+    <div class="prayer-note">Bản GitHub Pages hiện đếm các phiên đang mở trên cùng trình duyệt/thiết bị. Phần realtime giữa tất cả người dùng sẽ cần một backend nhỏ.</div>
   </div>
 </section>
 
@@ -315,10 +348,11 @@ function go(tab){
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
 
 function updateMetrics(){
- document.getElementById('mKnown').textContent=DATA.flashcards.filter(c=>state.known[c.id]).length+'/'+DATA.flashcards.length;
- document.getElementById('mCorrect').textContent=state.correct;
- document.getElementById('mAnswered').textContent=state.answered;
- document.getElementById('mMissed').textContent=Object.keys(state.missed).length;
+ const vals={
+  mKnown:DATA.flashcards.filter(c=>state.known[c.id]).length+'/'+DATA.flashcards.length,
+  mCorrect:state.correct,mAnswered:state.answered,mMissed:Object.keys(state.missed).length
+ };
+ Object.entries(vals).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v});
 }
 
 function renderFlash(){
@@ -509,6 +543,61 @@ function renderMissed(){
  });
 }
 function clearMissed(){state.missed={};save()}
+
+
+const PRAYER_PRESENCE_KEY='ob_prayer_presence_v1';
+const prayerSessionId='pray_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8);
+function prayerPandaSVG(){
+ return `<svg viewBox="0 0 160 190" aria-hidden="true">
+  <circle cx="45" cy="39" r="22" fill="#050505"/><circle cx="115" cy="39" r="22" fill="#050505"/>
+  <ellipse cx="80" cy="68" rx="57" ry="54" fill="#fff" stroke="#050505" stroke-width="7"/>
+  <path d="M46 57 Q58 48 69 54" fill="none" stroke="#050505" stroke-width="7" stroke-linecap="round"/>
+  <path d="M91 54 Q104 47 116 57" fill="none" stroke="#050505" stroke-width="7" stroke-linecap="round"/>
+  <path d="M51 69 Q60 64 68 69" fill="none" stroke="#050505" stroke-width="5" stroke-linecap="round"/>
+  <path d="M92 69 Q101 64 110 70" fill="none" stroke="#050505" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="80" cy="82" rx="8" ry="5" fill="#050505"/>
+  <path d="M65 94 Q80 104 96 94 Q91 113 80 113 Q69 113 65 94Z" fill="#050505"/>
+  <path d="M73 99 Q80 96 88 99" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="80" cy="137" rx="50" ry="43" fill="#050505"/>
+  <ellipse cx="80" cy="138" rx="31" ry="31" fill="#fff"/>
+  <ellipse cx="48" cy="166" rx="27" ry="20" fill="#050505"/><ellipse cx="112" cy="166" rx="27" ry="20" fill="#050505"/>
+  <path d="M46 121 Q59 114 69 132" fill="none" stroke="#050505" stroke-width="20" stroke-linecap="round"/>
+  <path d="M114 121 Q101 114 91 132" fill="none" stroke="#050505" stroke-width="20" stroke-linecap="round"/>
+  <path d="M76 118 Q79 108 80 105 Q81 108 84 118 L84 147 Q80 151 76 147Z" fill="#fff" stroke="#050505" stroke-width="5"/>
+  <path d="M78 124 L82 124" stroke="#050505" stroke-width="2"/>
+ </svg>`;
+}
+function readPrayerPresence(){
+ try{return JSON.parse(localStorage.getItem(PRAYER_PRESENCE_KEY)||'{}')}catch(e){return {}}
+}
+function writePrayerPresence(obj){
+ try{localStorage.setItem(PRAYER_PRESENCE_KEY,JSON.stringify(obj))}catch(e){}
+}
+function renderPrayerPresence(){
+ const now=Date.now(),all=readPrayerPresence();
+ const active=Object.entries(all).filter(([,t])=>now-Number(t)<16000);
+ const count=Math.max(1,active.length);
+ const n=Math.min(count,15);
+ const countEl=document.getElementById('prayerOnlineCount');
+ const crowd=document.getElementById('prayerCrowd');
+ const more=document.getElementById('prayerMore');
+ if(countEl)countEl.textContent=count;
+ if(crowd){
+  crowd.innerHTML=Array.from({length:n},(_,i)=>'<div class="prayer-person" style="--d:-'+((i%7)*0.17).toFixed(2)+'s">'+prayerPandaSVG()+'</div>').join('');
+ }
+ if(more)more.textContent=count>15?('+'+(count-15)+' người đang lạy ngoài khung hình 🙏'):'';
+}
+function pulsePrayerPresence(){
+ const now=Date.now(),all=readPrayerPresence(),clean={};
+ Object.entries(all).forEach(([id,t])=>{if(now-Number(t)<16000)clean[id]=Number(t)});
+ clean[prayerSessionId]=now;writePrayerPresence(clean);renderPrayerPresence();
+}
+function leavePrayerPresence(){
+ const all=readPrayerPresence();delete all[prayerSessionId];writePrayerPresence(all);
+}
+window.addEventListener('storage',e=>{if(e.key===PRAYER_PRESENCE_KEY)renderPrayerPresence()});
+window.addEventListener('pagehide',leavePrayerPresence);
+pulsePrayerPresence();setInterval(pulsePrayerPresence,5000);
 
 initTheme();updateMetrics();renderFlash();buildQuizPool();renderQuiz();renderCases();renderMissed();
 </script>
