@@ -1,25 +1,31 @@
 {
-  "name": "OB Quick Trainer • Cầu qua môn",
-  "short_name": "OB Trainer",
-  "description": "Active recall Sản khoa Y6 với Quiz, Flashcard, Cầu qua môn và Công đức.",
+  "name": "Cầu Qua Môn — Lạy Phật cầu qua môn sau thi",
+  "short_name": "Cầu Qua Môn",
+  "description": "Chánh điện hậu kỳ thi: lạy Phật, gõ mõ, thắp hương, xin xăm vui, viết sớ và lưu công đức.",
   "id": "./",
-  "start_url": "./?pwa=1",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#3157d5",
+  "background_color": "#130e19",
+  "theme_color": "#160f1b",
   "lang": "vi",
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]
