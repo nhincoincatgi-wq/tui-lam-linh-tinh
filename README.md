@@ -1,16 +1,3 @@
-# 🪷 Cầu Qua Môn
+# Bệnh viện không ngủ — Hệ thống thần y
 
-Ứng dụng vui sau kỳ thi, thay thế hoàn toàn bộ ôn Sản khoa trước đây.
-
-## Có gì trong app?
-- Chánh điện với tượng Phật, nút lạy 1/3 cái, mục tiêu 108 lạy.
-- Gõ mõ có âm thanh tùy chọn, thắp hương và hiệu ứng hoa sen.
-- Viết sớ cầu qua môn, lưu trên chính thiết bị.
-- Xin xăm ngẫu nhiên để giải trí; không phải công cụ dự đoán điểm thi.
-- Sổ công đức, lịch sử 7 ngày, dấu mốc và giao diện sáng/tối.
-- PWA cài lên điện thoại, hoạt động offline sau khi tải lần đầu.
-
-## Chạy
-Mở index.html hoặc bật GitHub Pages từ nhánh main ở thư mục gốc.
-
-Không có thư viện ngoài và không gửi dữ liệu cá nhân lên máy chủ. Dữ liệu được lưu qua localStorage.
+Web đọc truyện xuyên không/hệ thống kết hợp Nhi khoa Y6. Ba khoa mở đầu: Tiêu hóa, Hô hấp, Tim mạch. Truyện, tình huống, bệnh án là hư cấu; thông tin học tập liên kết nguồn tham khảo. Dùng GitHub Pages (static HTML/CSS/JS), lưu XP, trang đọc, bookmark trong localStorage. Có dark mode, font tùy chỉnh, đọc thành tiếng qua giọng máy. Dữ liệu cũ nằm ở nhánh backup-before-nhi-story-2026-11-22.

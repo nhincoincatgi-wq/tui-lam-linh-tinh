@@ -1,32 +1,16 @@
 {
-  "name": "Cầu Qua Môn — Lạy Phật cầu qua môn sau thi",
-  "short_name": "Cầu Qua Môn",
-  "description": "Chánh điện hậu kỳ thi: lạy Phật, gõ mõ, thắp hương, xin xăm vui, viết sớ và lưu công đức.",
-  "id": "./",
+  "name": "Bệnh viện không ngủ — Hệ thống thần y",
+  "short_name": "Bệnh viện không ngủ",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#130e19",
-  "theme_color": "#160f1b",
-  "lang": "vi",
+  "background_color": "#0b1120",
+  "theme_color": "#101729",
   "icons": [
-    {
-      "src": "./icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "./icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
     {
       "src": "./icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "type": "image/svg+xml"
     }
   ]
 }
