@@ -72,7 +72,7 @@ async function start(id,autoplay=false){
   showPlayer();return;
  }
  // Only real media files provide reliable Android background playback.
- const url=base+encodeURIComponent(id)+".mp3";
+ const url=base+encodeURIComponent(id)+".mp3?v=speaker-labels-20261122";
  try{
   const r=await fetch(url,{method:"HEAD",cache:"no-store"});
   if(!r.ok)throw new Error("Audio chưa có trên máy chủ ("+r.status+")");

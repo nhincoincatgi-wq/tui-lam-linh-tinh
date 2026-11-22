@@ -9,35 +9,35 @@ Rồi ánh sáng trắng xóa.
 
 Khi Minh mở mắt lần nữa, cậu đứng giữa khoa Cấp cứu Nhi của Bệnh viện Ánh Sao. Đồng hồ điện tử hiển thị 01 giờ 14. Một điều dưỡng đang đẩy xe thuốc qua trước mặt, như thể sự hiện diện của cậu ở đây hoàn toàn bình thường. Trên ngực áo blouse là tấm thẻ: LÂM MINH — THỰC TẬP SINH Y6.
 
-“Đứng ngây ra đó làm gì?” cô điều dưỡng hỏi, giọng không khó chịu, chỉ gấp gáp. “Có bé mới vào. Cậu phụ tôi nhé. Tôi là An Nhiên.”`),
+An Nhiên hỏi, giọng không khó chịu, chỉ gấp gáp: “Đứng ngây ra đó làm gì?” An Nhiên nói: “Có bé mới vào. Cậu phụ tôi nhé. Tôi là An Nhiên.”`),
 S(`Đã xác thực ký chủ: Lâm Minh.
 Nhiệm vụ cốt truyện: Trở thành bác sĩ đủ năng lực qua sáu khoa Nhi.
 Quy tắc: Hệ thống chỉ hiển thị nhiệm vụ và đánh giá suy luận. Không tiết lộ chẩn đoán. Không thay thế bác sĩ phụ trách.
 Chuyên khoa đầu tiên: TIÊU HÓA. Cấp hiện tại: 01.`),
-T(`Xuyên không? Hệ thống? Nếu đây là trò đùa, nó quá thật. Đứa trẻ đang khóc ở cửa kia thì tuyệt đối không phải trò đùa.`),
+T(`Minh thầm nghĩ: Xuyên không? Hệ thống? Nếu đây là trò đùa, nó quá thật. Đứa trẻ đang khóc ở cửa kia thì tuyệt đối không phải trò đùa.`),
 H('01:17 — Bốn câu hỏi đầu tiên'),
 P(`Một người mẹ bế bé trai chừng hơn một tuổi chạy đến. Áo chị ướt đẫm mưa; đôi tay ôm con run đến mức Minh có thể nghe thấy tiếng khóa kéo va vào nhau.
 
-“Con em tiêu chảy cả ngày. Sáng còn chơi. Tối nó cứ khóc đòi nước!”
+Mẹ bé Sóc nói: “Con em tiêu chảy cả ngày. Sáng còn chơi. Tối nó cứ khóc đòi nước!”
 
 An Nhiên đưa bé lên giường. Minh nhìn nhanh: bé tỉnh, khóc có tiếng, tự quay đầu theo mẹ; lồng ngực nâng đều, không tím tái. Bàn tay ấm, mạch ngoại biên bắt được, thời gian đổ đầy mao mạch khoảng hai giây. Không có biểu hiện sốc rõ trên đánh giá ban đầu.
 
-“Bé tên gì, bao nhiêu tháng, cân nặng gần đây?”
+Minh hỏi: “Bé tên gì, bao nhiêu tháng, cân nặng gần đây?”
 
-“Bé Sóc, mười sáu tháng. Hôm trước cân được mười ký.”
+Mẹ bé Sóc nói: “Bé Sóc, mười sáu tháng. Hôm trước cân được mười ký.”
 
-“Một ngày đi mấy lần? Phân ra bao nhiêu, toàn nước hay có nhầy máu? Có ói không? Bé uống và tiểu được thế nào?”
+Minh hỏi: “Một ngày đi mấy lần? Phân ra bao nhiêu, toàn nước hay có nhầy máu? Có ói không? Bé uống và tiểu được thế nào?”
 
 Người mẹ kể từ sáng đến giờ bé đi khoảng tám lần, phân toàn nước, mỗi lần thấm gần hết tã. Bé ói một lần sau ăn nhưng vẫn uống được từng ngụm. Không thấy máu trong phân. Bé sốt nhẹ buổi chiều. Lần thay tã ướt nước tiểu gần nhất cách đây hơn bốn giờ. Mấy hôm trước bé chơi với anh họ đang bị tiêu lỏng.
 
 Minh hỏi thêm về bệnh nền, thuốc đã uống, dị ứng, bú ăn và tiêm chủng. Cậu đặc biệt ghi nhớ: bé chưa dùng kháng sinh; chưa có cơn đau bụng quặn thành từng đợt; không nôn dịch xanh; không khó thở. Dữ kiện đó chưa loại trừ tất cả các nguyên nhân nguy hiểm, nhưng giúp định hướng tình huống.`),
-T(`Tiêu chảy cấp: từ ba lần phân lỏng bất thường trong một ngày, thời gian dưới mười bốn ngày. Nhưng nhiệm vụ trước tiên không phải đặt tên tác nhân. Phải xem có sốc, có mất nước, có uống được, có biến chứng và bệnh kèm hay không.`),
+T(`Minh thầm nghĩ: Tiêu chảy cấp: từ ba lần phân lỏng bất thường trong một ngày, thời gian dưới mười bốn ngày. Nhưng nhiệm vụ trước tiên không phải đặt tên tác nhân. Phải xem có sốc, có mất nước, có uống được, có biến chứng và bệnh kèm hay không.`),
 H('01:24 — Những dấu hiệu biết nói'),
 P(`Minh kiểm tra tri giác một lần nữa. Sóc bực bội, quấy khóc nhưng vẫn nhìn mẹ và đưa tay với bình nước. Mắt bé trũng hơn so với ảnh chụp hai ngày trước mà mẹ mở trên điện thoại. Miệng khô, véo nhẹ da bụng rồi thả: nếp da trở lại chậm, nhưng không quá hai giây. Khi mẹ đưa thìa nước tới, bé uống ngay và đòi thêm.
 
-“Nhìn tôi này,” bác sĩ trực Vũ nói từ phía sau. Minh ngẩng lên. Vũ là bác sĩ cấp cứu nhiều năm, nổi tiếng ít nói. “Em định kết luận mất nước chưa?”
+Bác sĩ Vũ nói từ phía sau: “Nhìn tôi này.” Minh ngẩng lên. Vũ là bác sĩ cấp cứu nhiều năm, nổi tiếng ít nói. Bác sĩ Vũ hỏi: “Em định kết luận mất nước chưa?”
 
-“Dạ, em muốn phối hợp dấu hiệu. Bé tỉnh nhưng kích thích, mắt trũng, uống háo hức và dấu véo da mất chậm. Em đánh giá có mất nước, chưa có bằng chứng mất nước nặng hay sốc lúc này.”
+Minh nói: “Dạ, em muốn phối hợp dấu hiệu. Bé tỉnh nhưng kích thích, mắt trũng, uống háo hức và dấu véo da mất chậm. Em đánh giá có mất nước, chưa có bằng chứng mất nước nặng hay sốc lúc này.”
 
 Vũ nhìn lại bé, đặt tay lên cổ tay nhỏ xíu và không nói gì thêm. Anh chỉ gật đầu với An Nhiên, yêu cầu cân bé tại khoa và ghi sinh hiệu đầy đủ.
 
@@ -47,19 +47,19 @@ Không mất nước: chưa đủ dấu hiệu thuộc nhóm có mất nước h
 Có mất nước: ít nhất 2 trong các dấu như kích thích/vật vã, mắt trũng, uống háo hức, nếp véo da mất chậm.
 Mất nước nặng: ít nhất 2 dấu như li bì/khó đánh thức, mắt trũng, không uống được hoặc uống kém, nếp véo da mất rất chậm (trên 2 giây).
 Lưu ý: đánh giá đồng bộ và tùy phác đồ chuẩn của đơn vị.`),
-T(`Đừng để hệ thống làm thay. Mình phải nhớ được vì sao Sóc thuộc nhóm nào. Kể cả một đứa trẻ vẫn tỉnh cũng không loại trừ mất nước; và dù mắt trũng, cũng không được vội kết luận mất nước nặng.`),
+T(`Minh thầm nghĩ: Đừng để hệ thống làm thay. Mình phải nhớ được vì sao Sóc thuộc nhóm nào. Kể cả một đứa trẻ vẫn tỉnh cũng không loại trừ mất nước; và dù mắt trũng, cũng không được vội kết luận mất nước nặng.`),
 H('01:31 — Con số 750'),
 P(`Cân hiện tại là 9,7 kg, trong khi con số “mười ký” trước đó không phải một lần cân được chuẩn hóa ngay trước bệnh. Minh không dùng chênh lệch đó làm căn cứ duy nhất; lâm sàng vẫn dẫn đường.
 
-“Phương án bù dịch?” bác sĩ Vũ hỏi.
+Bác sĩ Vũ hỏi: “Phương án bù dịch?”
 
-“Bé có mất nước và còn uống được. Em đề xuất phác đồ B bằng ORS giảm áp lực thẩm thấu, 75 mililít trên kilogram trong bốn giờ đầu. Nếu tính theo cân nặng tại khoa 9,7 kg thì khoảng 728 mililít, làm tròn phù hợp dụng cụ đo và theo dõi sát. Nếu dùng cân nặng chuẩn 10 kg để minh họa thì đúng 750 mililít trong bốn giờ.”
+Minh nói: “Bé có mất nước và còn uống được. Em đề xuất phác đồ B bằng ORS giảm áp lực thẩm thấu, 75 mililít trên kilogram trong bốn giờ đầu. Nếu tính theo cân nặng tại khoa 9,7 kg thì khoảng 728 mililít, làm tròn phù hợp dụng cụ đo và theo dõi sát. Nếu dùng cân nặng chuẩn 10 kg để minh họa thì đúng 750 mililít trong bốn giờ.”
 
-“Rồi sao?”
+Bác sĩ Vũ hỏi: “Rồi sao?”
 
-“Cho uống từng ít, thường xuyên; nếu ói thì ngừng vài phút rồi thử lại chậm hơn. Đánh giá lại tình trạng mất nước sau bốn giờ; đồng thời ghi nhận lượng tiêu và ói tiếp tục mất để bù thêm. Nếu trẻ không uống được hoặc chuyển nặng phải đổi chiến lược theo phác đồ phù hợp, báo bác sĩ ngay.”
+Minh nói: “Cho uống từng ít, thường xuyên; nếu ói thì ngừng vài phút rồi thử lại chậm hơn. Đánh giá lại tình trạng mất nước sau bốn giờ; đồng thời ghi nhận lượng tiêu và ói tiếp tục mất để bù thêm. Nếu trẻ không uống được hoặc chuyển nặng phải đổi chiến lược theo phác đồ phù hợp, báo bác sĩ ngay.”
 
-An Nhiên khẽ cười. “Mấy bạn Y6 khác thường đọc ngay liều, nhưng ít bạn nhớ phải quan sát một đứa bé có thật sự uống được hay không.”
+An Nhiên khẽ cười. An Nhiên nói: “Mấy bạn Y6 khác thường đọc ngay liều, nhưng ít bạn nhớ phải quan sát một đứa bé có thật sự uống được hay không.”
 
 Minh cúi xuống đút từng thìa ORS. Sóc nhăn mặt vì vị lạ. Mẹ bé định đưa nước ngọt thay thế, cậu nhẹ nhàng ngăn lại, giải thích ORS có tỷ lệ muối và đường được tính để hấp thu nước, nước ngọt không thay thế được. Một câu nói rất đơn giản, nhưng chị ôm bình ORS như nhận được tấm bản đồ trong đêm tối.`),
 C(`Phác đồ A: không mất nước, cho thêm dịch sau mỗi lần tiêu, tiếp tục ăn và bú, bổ sung kẽm, dặn dấu tái khám. Phác đồ B: có mất nước, ORS khoảng 75 mL/kg/4 giờ, đánh giá lại sau 4 giờ. Phác đồ C: mất nước nặng, cần bù dịch cấp cứu bằng đường phù hợp và theo dõi sát; đây không phải bước tự ý áp dụng khi trẻ vẫn uống tốt. Mỗi 1% cân nặng mất đi tương đương khoảng 10 mL/kg dịch.`),
@@ -68,13 +68,13 @@ P(`Bốn giờ sau, Sóc thôi đòi nước liên tục. Bé nhìn theo chiếc
 
 Trước khi về, Minh ngồi ngang tầm mắt người mẹ.
 
-“Chị pha gói ORS đúng với lượng nước ghi trên gói, không chia bột tùy ý, không thêm đường. Cho bé uống sau mỗi lần đi tiêu, uống chậm nếu dễ ói. Bé mười sáu tháng có thể bắt đầu với khoảng 50 đến 100 mililít sau mỗi lần phân lỏng rồi điều chỉnh theo khả năng uống và lượng mất. Bé vẫn ăn cháo, bú và uống sữa như thường lệ nếu dung nạp được; không nên nhịn ăn. Kẽm uống hai mươi miligam mỗi ngày, đủ mười đến mười bốn ngày theo hướng dẫn.”
+Minh nói: “Chị pha gói ORS đúng với lượng nước ghi trên gói, không chia bột tùy ý, không thêm đường. Cho bé uống sau mỗi lần đi tiêu, uống chậm nếu dễ ói. Bé mười sáu tháng có thể bắt đầu với khoảng 50 đến 100 mililít sau mỗi lần phân lỏng rồi điều chỉnh theo khả năng uống và lượng mất. Bé vẫn ăn cháo, bú và uống sữa như thường lệ nếu dung nạp được; không nên nhịn ăn. Kẽm uống hai mươi miligam mỗi ngày, đủ mười đến mười bốn ngày theo hướng dẫn.”
 
-“Bao giờ em phải đưa bé trở lại?”
+Mẹ bé Sóc hỏi: “Bao giờ em phải đưa bé trở lại?”
 
-“Nếu bé lừ đừ, uống kém hoặc không uống được, ói liên tục, tiêu nhiều hơn, tiểu ít, có máu trong phân, sốt cao kéo dài hay có bất kỳ dấu hiệu xấu đi, chị đưa bé đến khám ngay. Nếu không cải thiện cũng cần tái khám theo hẹn. Rửa tay, dùng thức ăn nước uống an toàn để phòng lây cho anh chị ở nhà.”
+Minh nói: “Nếu bé lừ đừ, uống kém hoặc không uống được, ói liên tục, tiêu nhiều hơn, tiểu ít, có máu trong phân, sốt cao kéo dài hay có bất kỳ dấu hiệu xấu đi, chị đưa bé đến khám ngay. Nếu không cải thiện cũng cần tái khám theo hẹn. Rửa tay, dùng thức ăn nước uống an toàn để phòng lây cho anh chị ở nhà.”
 
-Người mẹ gật đầu, rồi bất ngờ bật khóc. “Em cứ tưởng không truyền dịch là không chữa gì cho nó cả.”
+Người mẹ gật đầu, rồi bất ngờ bật khóc. Mẹ bé Sóc nói: “Em cứ tưởng không truyền dịch là không chữa gì cho nó cả.”
 
 Minh nhìn Sóc đã ngủ trong lòng mẹ. Cậu biết mình chưa làm điều gì kỳ diệu. Chỉ là chọn đúng điều cần làm, đúng lúc.`),
 S(`NHIỆM VỤ HOÀN THÀNH.
@@ -86,11 +86,11 @@ P(`Minh sững lại. Trên cổ tay Sóc khi nãy có một chiếc vòng nhự
 
 Trùng hợp chăng?
 
-Ở quầy trực, bác sĩ Vũ nhìn cậu như đang cố nhớ một người quen từ rất lâu. “Lâm Minh. Mai em vẫn trực chứ?”
+Ở quầy trực, bác sĩ Vũ nhìn cậu như đang cố nhớ một người quen từ rất lâu. Bác sĩ Vũ hỏi: “Lâm Minh. Mai em vẫn trực chứ?”
 
-“Dạ có.”
+Minh nói: “Dạ có.”
 
-“Vậy đừng đến trễ.”
+Bác sĩ Vũ nói: “Vậy đừng đến trễ.”
 
 Giọng anh bình thản. Nhưng Minh vừa thấy một điều rõ ràng: Vũ đã không còn nhìn cậu như một sinh viên Y6 thông thường.`)
 ],lessons:['Tiêu chảy cấp thường là phân lỏng bất thường ≥3 lần/24 giờ, kéo dài dưới 14 ngày; ở trẻ bú mẹ cần chú ý thay đổi so với thói quen đi tiêu thường ngày.','Đánh giá sốc và dấu nguy hiểm trước, sau đó phân độ mất nước bằng phối hợp tri giác, mắt, khả năng uống và dấu véo da.','Phác đồ B: ORS 75 mL/kg trong 4 giờ nếu trẻ có mất nước và uống được; đánh giá lại sau 4 giờ, bù lượng tiếp tục mất.','Không dùng kháng sinh thường quy cho tiêu chảy nước nghi do virus. Kẽm: ≥6 tháng 20 mg/ngày; dưới 6 tháng 10 mg/ngày, trong 10–14 ngày.','Dặn người nhà cách pha ORS theo đúng gói, tiếp tục ăn/bú, theo dõi lượng tiểu và dấu tái khám ngay.'],quiz:{q:'Trẻ 16 tháng, 10 kg, có mắt trũng, uống háo hức và dấu véo da mất chậm; trẻ tỉnh và uống được. Hướng bù dịch ban đầu phù hợp nhất?',options:['ORS 75 mL/kg/4 giờ, theo dõi và đánh giá lại','Truyền nhanh phác đồ C cho mọi trẻ tiêu chảy','Chỉ uống nước ngọt thay ORS','Ngưng ăn và uống cho ruột nghỉ hoàn toàn'],correct:0,explain:'Nhiều dấu gợi ý nhóm có mất nước, trẻ còn uống được nên ưu tiên phác đồ B: 75 × 10 = 750 mL ORS trong 4 giờ, sau đó đánh giá lại; dịch tiếp tục mất cần được bù.'}},
@@ -102,20 +102,20 @@ Bác sĩ trực chưa kịp hỏi, Minh đã tiến lại giường. Mẹ bé n�
 
 Cậu hỏi thời gian khởi phát, mức độ đau, cơn đau có làm bé co chân khóc thét rồi đột ngột yên không, có nôn dịch xanh hay chướng bụng không, phân máu từ lúc nào, đã dùng kháng sinh gì, và có người xung quanh mắc bệnh tương tự không.
 
-“Mỗi lần tiêu bé đau rặn, chứ không khóc thét từng cơn. Bé không nôn xanh. Từ sáng đến giờ bé đi máu ba lần.”`),
-T(`Phân máu là hội chứng lỵ. Nó gợi ý quá trình xâm lấn hoặc viêm đại tràng nhưng chưa đủ để xác định vi khuẩn nào. Đừng dùng kết quả xét nghiệm chưa có để đặt chẩn đoán chắc chắn.`),
+Mẹ bé Mây nói: “Mỗi lần tiêu bé đau rặn, chứ không khóc thét từng cơn. Bé không nôn xanh. Từ sáng đến giờ bé đi máu ba lần.”`),
+T(`Minh thầm nghĩ: Phân máu là hội chứng lỵ. Nó gợi ý quá trình xâm lấn hoặc viêm đại tràng nhưng chưa đủ để xác định vi khuẩn nào. Đừng dùng kết quả xét nghiệm chưa có để đặt chẩn đoán chắc chắn.`),
 H('Sự khác biệt giữa giống và đúng'),
 P(`Khám nhanh cho thấy Mây tỉnh, môi hơi khô nhưng uống bình thường, mắt không trũng rõ, véo da trở lại ngay. Bụng mềm, không chướng, chưa ghi nhận khối bất thường hay điểm đau khu trú. Cậu vẫn giữ lồng ruột trong chẩn đoán phân biệt nếu diễn tiến thay đổi, nhất là khi xuất hiện những cơn đau điển hình hoặc nôn dịch mật.
 
-“Em nhận định gì?” bác sĩ Hạ, phụ trách Tiêu hóa, hỏi khi bước vào.
+Bác sĩ Hạ, phụ trách Tiêu hóa, hỏi khi bước vào: “Em nhận định gì?”
 
-“Tiêu chảy cấp ngày hai, thể lỵ do có máu trong phân, chưa thấy mất nước lâm sàng hay sốc. Em nghi tác nhân xâm lấn như Shigella nhưng cần khai thác dịch tễ, xét nghiệm hợp lý và loại trừ nguyên nhân khác. Lồng ruột hiện ít gợi ý hơn, chưa thể nói loại trừ tuyệt đối bằng một lần khám.”
+Minh nói: “Tiêu chảy cấp ngày hai, thể lỵ do có máu trong phân, chưa thấy mất nước lâm sàng hay sốc. Em nghi tác nhân xâm lấn như Shigella nhưng cần khai thác dịch tễ, xét nghiệm hợp lý và loại trừ nguyên nhân khác. Lồng ruột hiện ít gợi ý hơn, chưa thể nói loại trừ tuyệt đối bằng một lần khám.”
 
-Hạ dừng bút. “Em mới trực ở đây một ngày?”
+Hạ dừng bút. Bác sĩ Hạ hỏi: “Em mới trực ở đây một ngày?”
 
-“Dạ.”
+Minh nói: “Dạ.”
 
-“Vậy hôm qua ai dạy em cách không quá tự tin?”
+Bác sĩ Hạ hỏi: “Vậy hôm qua ai dạy em cách không quá tự tin?”
 
 Minh suýt bật cười. Hệ thống trong đầu im phăng phắc, như thể cũng đang thưởng thức câu hỏi đó.`),
 S(`THỬ THÁCH: PHÂN MÁU KHÔNG PHẢI TÊN VI KHUẨN.
@@ -128,22 +128,22 @@ Cậu đề xuất cấy phân khi có chỉ định, bởi tác nhân và độ
 
 Hạ nhìn tờ ghi chú của Minh rất lâu.
 
-“Được. Trường hợp này có sốt, tiêu máu và biểu hiện lỵ, nghĩ Shigella khá cao. Chúng ta theo dõi tại viện, gửi xét nghiệm cần thiết, và điều trị kháng sinh sau khi đánh giá chống chỉ định, nguy cơ và hướng dẫn địa phương.”`),
+Bác sĩ Hạ nói: “Được. Trường hợp này có sốt, tiêu máu và biểu hiện lỵ, nghĩ Shigella khá cao. Chúng ta theo dõi tại viện, gửi xét nghiệm cần thiết, và điều trị kháng sinh sau khi đánh giá chống chỉ định, nguy cơ và hướng dẫn địa phương.”`),
 C(`Hội chứng lỵ = phân lỏng có máu. Bạch cầu/hồng cầu phân hỗ trợ gợi ý viêm hoặc xâm lấn, không xác định duy nhất tác nhân. Không dùng một CRP đơn lẻ để khẳng định tiêu chảy do vi khuẩn. Nếu nghi lồng ruột, siêu âm bụng là xét nghiệm cần cân nhắc, không chỉ dựa vào soi phân.`),
 H('Nguyên tắc thuốc trước đơn thuốc'),
 P(`Bệnh nhi nặng 12 kg. Bác sĩ Hạ cùng Minh kiểm tra bảng phác đồ của khoa, lịch sử dị ứng và nguy cơ kháng thuốc. Với lựa chọn azithromycin trong tình huống nghi Shigella đã được đánh giá phù hợp, phác đồ bài giảng Y6 nêu 10 mg/kg/ngày trong 5 ngày. Minh tự tính: 12 nhân 10 là 120 mg mỗi ngày. Nếu chế phẩm là hỗn dịch 200 mg/5 mL, lượng tương ứng là 3 mL mỗi ngày; cần kiểm tra đúng nồng độ trên chai trước khi ghi y lệnh.
 
 Hạ không ký ngay. Chị hỏi ngắn gọn: “Nếu trẻ có biểu hiện HUS hoặc nghi STEC thì sao?”
 
-“Em sẽ không tự áp dụng đơn này. Cần đánh giá nguy cơ, thận, huyết học, lựa chọn kháng sinh theo căn nguyên và hướng dẫn chuyên khoa. Em cũng cần theo dõi nước tiểu, thiếu máu, tiểu cầu nếu xuất hiện dấu cảnh báo.”
+Minh đáp: “Em sẽ không tự áp dụng đơn này. Cần đánh giá nguy cơ, thận, huyết học, lựa chọn kháng sinh theo căn nguyên và hướng dẫn chuyên khoa. Em cũng cần theo dõi nước tiểu, thiếu máu, tiểu cầu nếu xuất hiện dấu cảnh báo.”
 
-“Đúng.”
+Bác sĩ Hạ nói: “Đúng.”
 
 Minh nhận ra điều khiến bác sĩ tin tưởng không phải thuộc được liều, mà là biết **khi nào không nên dùng liều đó**.`),
 H('Cuộc gọi từ một người mẹ'),
 P(`Chiều tối, Mây giảm sốt, vẫn uống được ORS, chưa có bằng chứng mất nước; bác sĩ tiếp tục theo dõi diễn tiến phân máu, đau bụng và các kết quả xét nghiệm. Mẹ bé hỏi liệu có cần nhịn sữa, nhịn cháo.
 
-“Không chị ạ. Bé vẫn cần dinh dưỡng. Mình cho ăn lượng nhỏ, dễ tiêu, uống ORS để bù dịch mất, không tự dùng thuốc cầm tiêu chảy làm giảm nhu động ruột. Nếu bé đau bụng từng cơn dữ dội, nôn xanh, bụng chướng, lừ đừ, tiểu ít hoặc phân máu tăng thì báo ngay, dù đang ở viện.”
+Minh nói: “Không chị ạ. Bé vẫn cần dinh dưỡng. Mình cho ăn lượng nhỏ, dễ tiêu, uống ORS để bù dịch mất, không tự dùng thuốc cầm tiêu chảy làm giảm nhu động ruột. Nếu bé đau bụng từng cơn dữ dội, nôn xanh, bụng chướng, lừ đừ, tiểu ít hoặc phân máu tăng thì báo ngay, dù đang ở viện.”
 
 Khi Hạ ra ngoài, An Nhiên nghiêng đầu: “Cậu biết không, bác sĩ Hạ hiếm khi gật đầu với ai trong buổi đầu.”
 
@@ -166,34 +166,34 @@ Ngụm đầu giữ lại được. Ngụm thứ hai, bé nôn. Ngụm thứ ba,
 S(`THỬ THÁCH: THẤT BẠI ĐƯỜNG UỐNG.
 Nhiệm vụ: Phân biệt không mất nước, có mất nước và nguy cơ thất bại đường uống.
 Gợi ý: Một tình trạng có thể thay đổi theo thời gian. Không được kết luận từ một lần nhìn.`),
-T(`Bé chưa đủ dấu mất nước, nhưng mất dịch vẫn đang tiếp diễn. Nếu cứ để về vì “chưa mất nước”, mình có thể bỏ qua thời điểm cần can thiệp.`),
+T(`Minh thầm nghĩ: Bé chưa đủ dấu mất nước, nhưng mất dịch vẫn đang tiếp diễn. Nếu cứ để về vì “chưa mất nước”, mình có thể bỏ qua thời điểm cần can thiệp.`),
 H('Quan sát đúng, quyết định đúng'),
 P(`Minh hướng dẫn mẹ đợi khoảng năm phút sau nôn rồi cho uống ORS bằng thìa từng chút, chậm hơn trước. Cậu giải thích không nên uống ừng ực vì dễ kích thích nôn. Trong giờ đầu bé giữ được một ít, nhưng vẫn nôn nhiều và không đạt lượng dịch bù cần thiết.
 
-“Em đề xuất lưu theo dõi, đánh giá lại sớm và cân nhắc đường bù khác nếu vẫn không uống được,” Minh báo. “Nếu chuyển sang có mất nước, phác đồ B là khoảng 75 mL/kg/4 giờ; bé chín ký tương ứng 675 mL. Nhưng nếu không thể giữ dịch, không thể chỉ ghi 675 mL rồi mặc kệ. Cần bác sĩ chọn đường bù qua sonde hoặc tĩnh mạch tùy đánh giá và điều kiện.”
+Minh báo: “Em đề xuất lưu theo dõi, đánh giá lại sớm và cân nhắc đường bù khác nếu vẫn không uống được.” Minh nói: “Nếu chuyển sang có mất nước, phác đồ B là khoảng 75 mL/kg/4 giờ; bé chín ký tương ứng 675 mL. Nhưng nếu không thể giữ dịch, không thể chỉ ghi 675 mL rồi mặc kệ. Cần bác sĩ chọn đường bù qua sonde hoặc tĩnh mạch tùy đánh giá và điều kiện.”
 
 Bác sĩ Vũ hỏi: “Ondansetron thì sao?”
 
-“Có thể được cân nhắc ở một số tình huống để hỗ trợ bù uống, nhưng không thay thế đánh giá nguyên nhân ói. Phải xem tuổi, nguy cơ rối loạn điện giải, QT và chống chỉ định theo phác đồ. Không dùng thuốc để che lấp nôn mật hay bụng ngoại khoa.”
+Minh nói: “Có thể được cân nhắc ở một số tình huống để hỗ trợ bù uống, nhưng không thay thế đánh giá nguyên nhân ói. Phải xem tuổi, nguy cơ rối loạn điện giải, QT và chống chỉ định theo phác đồ. Không dùng thuốc để che lấp nôn mật hay bụng ngoại khoa.”
 
-Vũ nhìn An Nhiên. “Cho bé nằm theo dõi. Nhớ đo lại dấu sinh tồn và lượng tiểu.”`),
+Vũ nhìn An Nhiên. Bác sĩ Vũ nói: “Cho bé nằm theo dõi. Nhớ đo lại dấu sinh tồn và lượng tiểu.”`),
 C(`Ở trẻ ói nhiều, câu hỏi then chốt là trẻ có thực sự giữ được nước hay không. Quan sát mẹ đút ORS là một bước đánh giá. Bài giảng yêu cầu lưu theo dõi ít nhất vài giờ khi ói nhiều; tiếp tục nôn hoặc xuất hiện mất nước tiến triển có thể cần nhập viện. Nếu có mất nước và thất bại đường uống, bác sĩ lựa chọn bù dịch phù hợp, theo dõi sát điện giải và lượng dịch mất tiếp tục.`),
 H('Ngưỡng không nằm ở mắt thường'),
 P(`Khi tình trạng ói kéo dài, bác sĩ chỉ định kiểm tra điện giải và đường huyết theo đánh giá lâm sàng. Kali 3,2 mmol/L, natri 136 mmol/L, đường huyết 84 mg/dL. Minh ghi chú: kali dưới 3,5 mmol/L là hạ theo khoảng tham chiếu thường dùng; 3,2 là mức nhẹ. Đường huyết 84 mg/dL chưa thuộc ngưỡng hạ đường huyết thường dùng dưới 70 mg/dL. Nhưng cậu không dựa vào một xét nghiệm để khẳng định trẻ an toàn.
 
 Vũ hỏi: “Nếu kali là 2,3 thì sao?”
 
-“Nguy cơ biến chứng tăng rõ. Em cần đánh giá yếu cơ, liệt ruột, nhịp tim, ECG và điều trị khẩn theo phác đồ, đồng thời kiểm tra chức năng thận, lượng tiểu. Không thể xem hai con số 3,2 và 2,3 như nhau.”
+Minh nói: “Nguy cơ biến chứng tăng rõ. Em cần đánh giá yếu cơ, liệt ruột, nhịp tim, ECG và điều trị khẩn theo phác đồ, đồng thời kiểm tra chức năng thận, lượng tiểu. Không thể xem hai con số 3,2 và 2,3 như nhau.”
 
 Đó là lần đầu bác sĩ Vũ chủ động đặt câu hỏi khó hơn mức một sinh viên thực tập thông thường cần trả lời. Minh hiểu mình vừa bước lên một bậc nhỏ.`),
 H('Tờ giấy đưa cho mẹ'),
 P(`Sau một thời gian bù dịch và theo dõi tại khoa theo y lệnh bác sĩ, bé giữ dịch tốt dần, đi tiểu trở lại, sinh hiệu ổn. Bác sĩ tiếp tục đánh giá trước khi quyết định cho về. Minh dặn mẹ dùng ORS đúng cách, chia từng ít, tiếp tục cho bú mẹ và ăn phù hợp, sử dụng kẽm theo tuổi, theo dõi số lần tiêu/nôn và lượng nước tiểu.
 
-“Bé nôn xanh, nôn ra máu, bụng chướng, đau dữ dội, lừ đừ, bỏ bú hoặc tiểu rất ít thì chị quay lại ngay. Những dấu này không nên chờ đến sáng.”
+Minh nói: “Bé nôn xanh, nôn ra máu, bụng chướng, đau dữ dội, lừ đừ, bỏ bú hoặc tiểu rất ít thì chị quay lại ngay. Những dấu này không nên chờ đến sáng.”
 
-“Còn thuốc chống ói?” người mẹ hỏi.
+Người mẹ hỏi: “Còn thuốc chống ói?”
 
-“Không tự dùng lại khi chưa được hướng dẫn. Quan trọng nhất là nguyên nhân nôn và khả năng bù nước.”
+Minh nói: “Không tự dùng lại khi chưa được hướng dẫn. Quan trọng nhất là nguyên nhân nôn và khả năng bù nước.”
 
 Cánh cửa phòng khám vừa khép, hệ thống xuất hiện. Nhưng lần này không có ánh sáng chói lòa. Chỉ có một dòng chữ mảnh như nét bút chì.`),
 S(`HOÀN THÀNH NHIỆM VỤ.
@@ -208,25 +208,25 @@ Không hiểu sao, từ xa bác sĩ Vũ quay lại nhìn cậu, như thể đang
 H('Tiếng thở trong phòng số bốn'),
 P(`Minh nghe tiếng ho trước khi nhìn thấy đứa trẻ. Bé trai tên Khôi, hai tuổi ba tháng, sốt ngày thứ ba, ho ngày thứ tư. Mẹ bé đã cho uống siro ho, nhưng tối nay bé thở nhanh hơn. Một điều dưỡng vừa ghi nhịp thở 42 lần/phút, nhiệt độ 38,7°C, SpO₂ 97% khí trời.
 
-Bác sĩ phụ trách Hô hấp tên Phong xem lại phiếu khám. “Em nghĩ sao?”
+Bác sĩ phụ trách Hô hấp tên Phong xem lại phiếu khám. Bác sĩ Phong hỏi: “Em nghĩ sao?”
 
 Minh không vội trả lời. Cậu nhìn Khôi khi bé bớt khóc, đếm trọn một phút. Nhịp thở 42. Cậu hỏi ăn uống được không, có co giật, li bì, nôn mọi thứ, đau ngực, tiền căn dị ứng, khò khè, các thuốc đã dùng và lịch tiêm chủng đặc biệt Hib, phế cầu, cúm. Khôi tỉnh, vẫn trả lời mẹ bằng vài từ, uống được, không co kéo rõ, không tím.
 
 Nghe phổi bên phải có ran nổ khu trú vùng đáy, rì rào phế nang hơi giảm so với trái. Minh ghi nhận, không tự tưởng tượng thêm các dấu khám chưa làm.`),
-T(`Ngưỡng thở nhanh từ một đến dưới năm tuổi là từ 40 lần/phút. Với bé hơn hai tuổi, 42 là nhanh. Nhưng sốt, khóc, đau cũng có thể làm nhịp thở tăng. Đếm khi trẻ yên, nhìn toàn bộ bệnh cảnh.`),
+T(`Minh thầm nghĩ: Ngưỡng thở nhanh từ một đến dưới năm tuổi là từ 40 lần/phút. Với bé hơn hai tuổi, 42 là nhanh. Nhưng sốt, khóc, đau cũng có thể làm nhịp thở tăng. Đếm khi trẻ yên, nhìn toàn bộ bệnh cảnh.`),
 S(`CHUYÊN KHOA HÔ HẤP ĐÃ MỞ.
 Ngưỡng thở nhanh để ghi nhớ: dưới 2 tháng ≥60; từ 2 đến dưới 12 tháng ≥50; từ 1 đến dưới 5 tuổi ≥40; từ 5 tuổi trở lên ≥30 lần/phút (theo bảng học của Bộ môn Nhi).
 Nhiệm vụ: xác định dấu hô hấp dưới và dấu nguy hiểm, không suy phân độ nặng chỉ từ một nhịp thở.`),
 H('Phim X-quang và lời giải không hiện sẵn'),
 P(`Bác sĩ Phong cho chỉ định X-quang ngực theo đánh giá tại khoa, vì cần làm rõ bệnh cảnh và các chẩn đoán phân biệt. Trên phim, Minh thấy một đám mờ khu trú vùng phổi phải có thể phù hợp tổn thương nhu mô. Cậu kiểm tra tư thế và chất lượng phim trước khi kết luận, rồi đối chiếu khám.
 
-“Một vùng mờ phải luôn là vi khuẩn?” Phong hỏi.
+Bác sĩ Phong hỏi: “Một vùng mờ phải luôn là vi khuẩn?”
 
-“Không ạ. Hình ảnh phải kết hợp lâm sàng; virus cũng có thể gây tổn thương phổi, ngoài ra còn xẹp phổi. Không có một dấu X-quang đơn độc đủ để xác định tác nhân.”
+Minh nói: “Không ạ. Hình ảnh phải kết hợp lâm sàng; virus cũng có thể gây tổn thương phổi, ngoài ra còn xẹp phổi. Không có một dấu X-quang đơn độc đủ để xác định tác nhân.”
 
-Phong nhìn Minh thêm lần nữa. “Vậy CRP?”
+Phong nhìn Minh thêm lần nữa. Bác sĩ Phong hỏi: “Vậy CRP?”
 
-“Cũng không thể dùng duy nhất CRP để chọn kháng sinh. Em cần tuổi, dấu nặng, dịch tễ, tiêm chủng, diễn tiến và khả năng theo dõi.”
+Minh nói: “Cũng không thể dùng duy nhất CRP để chọn kháng sinh. Em cần tuổi, dấu nặng, dịch tễ, tiêm chủng, diễn tiến và khả năng theo dõi.”
 
 Bác sĩ Phong lấy lại phim. Lần này anh không hỏi thêm. Anh đang tự hỏi vì sao một sinh viên mới chuyển tới lại chủ động nhắc đến giới hạn của bằng chứng.`),
 H('Ba bệnh nhi, ba con đường'),
@@ -241,7 +241,7 @@ P(`Sau khi thăm khám và đánh giá nguy cơ, bác sĩ Phong nhận định K
 
 Minh nhẩm liều amoxicillin thường được dùng trong một số phác đồ viêm phổi cộng đồng nhi là 80–90 mg/kg/ngày chia hai lần. Lấy 80 mg/kg/ngày cho tình huống này: 12 × 80 = 960 mg/ngày, tức 480 mg mỗi lần, hai lần/ngày. Nếu dùng hỗn dịch 400 mg/5 mL, thể tích tương ứng là 6 mL mỗi lần. Tuy nhiên, trước khi ký toa cần bác sĩ xác định chính xác phác đồ, thời gian điều trị, dạng bào chế, dị ứng beta-lactam và khả năng tuân thủ.
 
-“Em tính nhanh đấy,” Phong nói.
+Bác sĩ Phong nói: “Em tính nhanh đấy.”
 
 Minh đáp: “Em chỉ không muốn chị mẹ nghe một chữ 'mấy muỗng' rồi phải tự đoán.”
 
@@ -251,9 +251,9 @@ P(`Minh hướng dẫn mẹ Khôi dùng thuốc đúng nồng độ và đúng l
 
 Bác sĩ Phong bất ngờ nói: “Em ở lại tham gia buổi giao ban ca Hô hấp sáng mai.”
 
-“Dạ?”
+Minh hỏi: “Dạ?”
 
-“Thầy muốn biết em sẽ xử trí thế nào nếu một đứa trẻ đã uống kháng sinh ba ngày mà không đỡ.”
+Bác sĩ Phong nói: “Thầy muốn biết em sẽ xử trí thế nào nếu một đứa trẻ đã uống kháng sinh ba ngày mà không đỡ.”
 
 Hệ thống bật sáng đúng lúc Minh khép hồ sơ.`),
 S(`HOÀN THÀNH NHIỆM VỤ.
@@ -268,14 +268,14 @@ P(`Bệnh nhi số bảy là bé An, sáu tháng tuổi, sinh đủ tháng, trư
 
 Minh quan sát nhịp thở 56 lần/phút khi yên, SpO₂ 93% khí trời; có rút lõm nhẹ dưới sườn, hai phổi ran rít và ran ẩm rải rác. Bé vẫn tỉnh nhưng bú được ít hơn thường ngày. Cậu kiểm tra có ngưng thở, tím, kiệt sức hay tri giác xấu đi không. Với trẻ từ hai tháng đến dưới một tuổi, nhịp thở từ 50 đã được coi là nhanh theo bảng thực tập.
 
-“Đầu tiên khò khè sau viêm hô hấp trên, dưới hai tuổi,” Minh tự nhủ. “Viêm tiểu phế quản cấp do virus, RSV là tác nhân thường gặp. Nhưng phải phân biệt viêm phổi và các nguyên nhân khác.”`),
-T(`Khò khè không đồng nghĩa hen. Muốn nghĩ hen cần xem cơn tái diễn, tiền căn bản thân/gia đình, triệu chứng biến thiên và đáp ứng giãn phế quản trong hoàn cảnh phù hợp. Một cơn khò khè đầu ở trẻ sáu tháng sau sổ mũi không tự đủ chẩn đoán hen.`),
+Minh tự nhủ: “Đầu tiên khò khè sau viêm hô hấp trên, dưới hai tuổi,” Minh tự nhủ. Minh tự nhủ: “Viêm tiểu phế quản cấp do virus, RSV là tác nhân thường gặp. Nhưng phải phân biệt viêm phổi và các nguyên nhân khác.”`),
+T(`Minh thầm nghĩ: Khò khè không đồng nghĩa hen. Muốn nghĩ hen cần xem cơn tái diễn, tiền căn bản thân/gia đình, triệu chứng biến thiên và đáp ứng giãn phế quản trong hoàn cảnh phù hợp. Một cơn khò khè đầu ở trẻ sáu tháng sau sổ mũi không tự đủ chẩn đoán hen.`),
 H('Không phải cứ có thuốc là phải dùng'),
 P(`Điều dưỡng mới hỏi có cần chuẩn bị salbutamol khí dung và kháng sinh ngay hay không. Minh lắc đầu, nhờ báo bác sĩ phụ trách: viêm tiểu phế quản điển hình chủ yếu điều trị hỗ trợ, không thường quy dùng kháng sinh hay thuốc giãn phế quản. Quan trọng là theo dõi công thở, SpO₂, khả năng bú, nước tiểu và tình trạng ngưng thở.
 
-Bác sĩ Phong bước tới. “Điều gì sẽ làm em đổi thái độ theo dõi?”
+Bác sĩ Phong bước tới. Bác sĩ Phong hỏi: “Điều gì sẽ làm em đổi thái độ theo dõi?”
 
-“Nếu bé thở nhanh tăng nhiều, tím, ngưng thở, SpO₂ giảm, co kéo nặng, bú không đủ gây mất nước, lơ mơ hoặc kiệt sức. Đặc biệt trẻ rất nhỏ, sinh non, bệnh tim bẩm sinh, bệnh phổi mạn có nguy cơ cao hơn.”
+Minh nói: “Nếu bé thở nhanh tăng nhiều, tím, ngưng thở, SpO₂ giảm, co kéo nặng, bú không đủ gây mất nước, lơ mơ hoặc kiệt sức. Đặc biệt trẻ rất nhỏ, sinh non, bệnh tim bẩm sinh, bệnh phổi mạn có nguy cơ cao hơn.”
 
 Phong nhìn thiết bị đo. Anh đề nghị hút mũi nhẹ khi cần, chia nhỏ cữ bú, theo dõi oxy và điều trị hỗ trợ theo phác đồ của khoa. X-quang và xét nghiệm virus không phải bắt buộc thường quy trong bệnh cảnh điển hình, chỉ làm khi có chỉ định vì bất thường hay biến chứng.`),
 S(`THỬ THÁCH PHÂN ĐỘ: BA EM BÉ KHÒ KHÈ.
@@ -286,15 +286,15 @@ Nhiệm vụ: Không đánh đồng mọi tiếng khò khè.`),
 H('Lý do của một nhịp thở'),
 P(`Sau một lúc theo dõi, SpO₂ của An giảm xuống 90–91% khí trời, tình trạng bú cũng kém. Bác sĩ đánh giá lại, cho hỗ trợ oxy theo ngưỡng và phác đồ của đơn vị, cân nhắc nhập viện tiếp tục theo dõi. Minh biết con số SpO₂ không nên tách khỏi công thở và tổng trạng; ngưỡng hỗ trợ có khác biệt giữa hướng dẫn và cơ địa.
 
-“Nhịp thở tăng là do đâu?” Phong hỏi.
+Bác sĩ Phong hỏi: “Nhịp thở tăng là do đâu?”
 
 Minh không lặp một dòng sách thuộc lòng. Cậu hình dung lòng tiểu phế quản nhỏ xíu bị phù nề, chất nhầy và mảnh tế bào làm hẹp đường dẫn khí. Không khí ra khó, gây ứ khí; chỗ tắc hoàn toàn có thể xẹp phổi. Tăng công thở, bất tương xứng thông khí/tưới máu làm oxy giảm. Đó không phải một câu chuyện có thể giải quyết đơn thuần bằng kháng sinh.
 
-Phong khẽ gật. “Lần đầu em giải thích được cả tiếng ran và dấu co kéo bằng cùng một cơ chế.”`),
+Phong khẽ gật. Bác sĩ Phong nói: “Lần đầu em giải thích được cả tiếng ran và dấu co kéo bằng cùng một cơ chế.”`),
 H('Bài học dành cho người chăm sóc'),
 P(`Khi bé ổn định hơn, Minh nói với bà ngoại: “Mình không tự dùng kháng sinh hay khí dung tại nhà chỉ vì nghe khò khè. Chị giúp bé thông thoáng mũi, cho bú ít một nhưng nhiều lần, theo dõi lượng tiểu và nhịp thở khi bé yên. Nếu bé bỏ bú, thở mệt tăng, tím, ngưng thở, khó đánh thức thì đưa đi viện ngay.”
 
-Bà ngoại thở dài. “Thì ra trước giờ tôi tưởng cứ nghe khò khè là suyễn.”
+Bà ngoại thở dài. Bà ngoại nói: “Thì ra trước giờ tôi tưởng cứ nghe khò khè là suyễn.”
 
 Minh cười: “Một tiếng thở không phải một tên bệnh.”
 
@@ -313,7 +313,7 @@ P(`Lúc hai giờ mười phút, bé Linh tám tuổi được đưa vào vì kh
 Linh ngồi thẳng, thở gấp 32 lần/phút, SpO₂ 93% khí trời, nói từng cụm từ ngắn. Rút lõm liên sườn rõ, hai phổi ran rít thì thở ra, nhưng vùng đáy trái thông khí kém.
 
 Minh không thấy đây là một cơn hen “bình thường”. Cậu đánh giá khả năng nói, tri giác, công thở, SpO₂, mạch, thông khí và tiền căn cơn nặng, từng nhập viện/hồi sức. Dù tiếng ran rít gợi tắc nghẽn, giảm rõ âm phế bào có thể cảnh báo cản trở luồng khí nghiêm trọng.`),
-T(`Bệnh nhẹ không thể đồng nghĩa “còn khò khè”, và bệnh nặng không phải cứ ran to hơn. Khi luồng khí quá ít, phổi có thể im lặng. Đó là dấu hiệu phải hành động ngay.`),
+T(`Minh thầm nghĩ: Bệnh nhẹ không thể đồng nghĩa “còn khò khè”, và bệnh nặng không phải cứ ran to hơn. Khi luồng khí quá ít, phổi có thể im lặng. Đó là dấu hiệu phải hành động ngay.`),
 S(`THỬ THÁCH HEN CẤP.
 Mức độ không chỉ dựa vào một con số. Xem nói thành câu hay từng từ, tư thế, co kéo, tri giác, SpO₂, thông khí, mạch và đáp ứng thuốc.
 Bẫy nguy hiểm: “Phổi im lặng” có thể là dấu hiệu rất nặng, không phải hết co thắt.`),
@@ -328,18 +328,18 @@ P(`Sau điều trị ban đầu, Linh nói được câu dài hơn, công thở 
 
 Minh đặt cạnh nhau hai bệnh nhi trong đầu: bé An sáu tháng khò khè lần đầu do viêm tiểu phế quản không dùng giãn phế quản thường quy; Linh tám tuổi có tiền sử hen, triệu chứng biến thiên, khò khè tái diễn và đáp ứng điều trị cơn hen — khác hoàn toàn về cách tiếp cận.
 
-“Em phân biệt được rồi,” Phong nói. “Nhưng còn sau cơn?”
+Bác sĩ Phong nói: “Em phân biệt được rồi.” Bác sĩ Phong hỏi: “Nhưng còn sau cơn?”
 
 Minh nhìn mẹ Linh: “Mình cần đánh giá kế hoạch kiểm soát hen lâu dài, kỹ thuật dùng bình hít và buồng đệm, yếu tố khởi phát, tuân thủ thuốc chống viêm dạng hít theo bậc điều trị. Không nên chỉ dựa vào thuốc cắt cơn SABA đơn độc.”`),
 C(`Cơn hen cấp cần đánh giá lại liên tục. SABA qua buồng đệm là một lựa chọn chính trong cơn; dùng corticosteroid toàn thân sớm khi có chỉ định. Đừng lẫn cách xử trí hen với viêm tiểu phế quản. Thiếu oxy, tri giác xấu, giảm thông khí, kiệt sức hoặc không đáp ứng là dấu cần hỗ trợ cấp cứu mức cao.`),
 H('Chữ ký lạ trên hồ sơ'),
 P(`Mẹ Linh cúi đầu cảm ơn. Phong gọi Minh ra ngoài hành lang, nơi chỉ còn tiếng máy lạnh và ánh đèn xanh.
 
-“Thầy không biết em đã học với ai. Nhưng em đã phát hiện vùng phổi giảm thông khí trước khi thầy chỉ vào. Đó không phải điều học được bằng cách thuộc từng đáp án.”
+Bác sĩ Phong nói: “Thầy không biết em đã học với ai. Nhưng em đã phát hiện vùng phổi giảm thông khí trước khi thầy chỉ vào. Đó không phải điều học được bằng cách thuộc từng đáp án.”
 
 Minh im lặng. Trong đời thật, cậu đã từng học vẹt như bao người. Có lẽ chính những lần thất bại trước đây đang giúp cậu không vội lúc này.
 
-Từ phòng trực xa xa vang lên tiếng chuông nội viện. “Khoa Tim mạch cần bác sĩ hỗ trợ. Bệnh nhi sốt kéo dài, mắt đỏ, siêu âm có bất thường.”
+Từ phòng trực xa xa vang lên tiếng chuông nội viện. Loa nội viện thông báo: “Khoa Tim mạch cần bác sĩ hỗ trợ. Bệnh nhi sốt kéo dài, mắt đỏ, siêu âm có bất thường.”
 
 Hệ thống hiện lên một dòng mới.`),
 S(`BOSS KHOA HÔ HẤP ĐÃ VƯỢT QUA.
@@ -357,7 +357,7 @@ Một bác sĩ trẻ đứng cạnh nói: “Chắc nhiễm siêu vi phát ban.�
 Minh không phản bác ngay. Cậu hỏi ho, sổ mũi, chảy mủ mắt, ban diễn tiến, tiếp xúc sởi, tiêm chủng, hạch cổ và thuốc đã dùng. Sau đó cậu quan sát kỹ dấu hiệu ở tay chân.
 
 Một cấu trúc quen thuộc hiện ra: sốt kéo dài, viêm kết mạc không xuất tiết, thay đổi môi miệng, phát ban, thay đổi đầu chi. Chỉ một chi tiết sai cũng có thể làm cả suy luận lệch hướng. Nhưng lần này, dữ kiện xếp thành một hình rõ ràng.`),
-T(`Kawasaki là viêm mạch máu hệ thống cấp, thường gặp dưới năm tuổi. Điều đáng sợ không phải mắt đỏ hay ban da riêng lẻ; là tổn thương động mạch vành có thể xuất hiện sau đó.`),
+T(`Minh thầm nghĩ: Kawasaki là viêm mạch máu hệ thống cấp, thường gặp dưới năm tuổi. Điều đáng sợ không phải mắt đỏ hay ban da riêng lẻ; là tổn thương động mạch vành có thể xuất hiện sau đó.`),
 S(`BOSS TIM MẠCH: KAWASAKI.
 Theo bài giảng AHA 2024: sốt ≥4 ngày và ít nhất 4/5 đặc điểm chính khi không có chẩn đoán khác giải thích hợp lý.
 Năm nhóm dấu: kết mạc hai bên không mủ; môi-miệng; thay đổi đầu chi; ban đa dạng; hạch cổ thường một bên, >1,5 cm.`),
@@ -368,9 +368,9 @@ Minh tự nhủ: tiểu cầu có thể bình thường trong những ngày đ�
 
 Siêu âm tim ghi nhận nhánh liên thất trước có Z-score 2,7; bác sĩ siêu âm kiểm tra lại phép đo, tham chiếu theo kích thước cơ thể và xác nhận. Minh nói rõ: Z-score từ 2 đến dưới 2,5 là chỉ giãn; từ 2,5 đến dưới 5 thuộc nhóm phình nhỏ; từ 5 đến dưới 10 và đường kính tuyệt đối dưới 8 mm là phình vừa; từ 10 trở lên hoặc đường kính ≥8 mm là phình lớn/khổng lồ.
 
-Bác sĩ tim mạch Hiếu nhìn cậu. “Em đã tính đến điều gì khi khám mắt đầu tiên?”
+Bác sĩ tim mạch Hiếu nhìn cậu. Bác sĩ Hiếu hỏi: “Em đã tính đến điều gì khi khám mắt đầu tiên?”
 
-“Rằng đỏ mắt không xuất tiết kèm sốt kéo dài có thể là một mảnh của bệnh toàn thân. Em không được chờ đến lúc tim tổn thương mới nghĩ Kawasaki.”`),
+Minh đáp: “Rằng đỏ mắt không xuất tiết kèm sốt kéo dài có thể là một mảnh của bệnh toàn thân. Em không được chờ đến lúc tim tổn thương mới nghĩ Kawasaki.”`),
 H('Khoảng thời gian vàng'),
 P(`Bác sĩ Hiếu xác nhận chẩn đoán sau khi đối chiếu toàn bộ lâm sàng và nguyên nhân phân biệt. Anh chỉ định điều trị ở khoa Tim mạch, IVIG liều 2 g/kg một liều truyền tĩnh mạch chậm theo quy trình theo dõi của bệnh viện. Bé nặng 14 kg, tức tổng 28 g IVIG. Aspirin được cân nhắc theo pha bệnh, nguy cơ và phác đồ chuyên khoa; trong bài giảng Y6, giai đoạn cấp có thể dùng khoảng 30–50 mg/kg/ngày, sau hết sốt chuyển liều kháng kết tập tiểu cầu 3–5 mg/kg/ngày theo kế hoạch theo dõi. Trẻ có tổn thương mạch vành ban đầu cần đánh giá nguy cơ cao và xem xét điều trị tăng cường theo chuyên khoa, không chỉ sao chép một đơn chuẩn cho mọi trẻ.
 
@@ -381,11 +381,11 @@ C(`Bài giảng Kawasaki Y6: IVIG 2 g/kg truyền chậm, tốt nhất trong 10 
 H('Một câu nói làm bác sĩ dừng bút'),
 P(`Đến sáng, bé hạ sốt dần sau điều trị, nhưng Minh không gọi đó là “khỏi bệnh”. Tổn thương động mạch vành cần theo dõi theo phân tầng nguy cơ, kể cả khi trẻ hết đỏ mắt, hết ban. Cậu giải thích với mẹ bé về lịch siêu âm lại, thuốc theo toa, dấu đau ngực, khó thở, lừ đừ, sốt trở lại cần khám sớm, và không tự ngưng aspirin.
 
-Trước cửa phòng, bác sĩ Hiếu đọc lại hồ sơ Minh đã viết. “Một sinh viên Y6 mà biết Z-score, liều IVIG, cả chuyện không chờ tiểu cầu tăng...”
+Trước cửa phòng, bác sĩ Hiếu đọc lại hồ sơ Minh đã viết. Bác sĩ Hiếu nói: “Một sinh viên Y6 mà biết Z-score, liều IVIG, cả chuyện không chờ tiểu cầu tăng...”
 
 Minh hơi cúi đầu: “Em đọc được từ những người đi trước. Em chỉ muốn lúc gặp bệnh nhân thật, kiến thức ấy có ích.”
 
-Hiếu gập hồ sơ. “Tốt. Nhưng hệ tim mạch không tha cho ai đoán mò.”
+Hiếu gập hồ sơ. Bác sĩ Hiếu nói: “Tốt. Nhưng hệ tim mạch không tha cho ai đoán mò.”
 
 Hệ thống bỗng rung lên. Trên màn hình chỉ có hai từ: ECHO–07.`),
 S(`HOÀN THÀNH NHIỆM VỤ.
@@ -400,13 +400,13 @@ P(`Một bé trai bốn tháng tuổi tên Nam được đưa vào vì thở nha
 Minh quan sát nhịp thở 58 lần/phút, nhịp tim nhanh khi bé nằm yên, không tím; nghe phổi có ít ran ẩm, tim có tiếng thổi toàn tâm thu cạnh ức trái. Sờ gan dưới bờ sườn, cần đánh giá kích thước theo tuổi và bối cảnh. Minh không gọi đây là viêm phổi chỉ vì thở nhanh.
 
 Cậu hỏi tiền căn khám tim sơ sinh, siêu âm trước đó, bú bao lâu mỗi cữ, lượng bú, vã mồ hôi, thở nhanh từ khi nào, số lần nhập viện và thời điểm cân nặng chậm tăng. Một chi tiết hiện ra: Nam đã được nghe thấy tiếng thổi tim khi hai tháng tuổi, nhưng gia đình chưa đi khám chuyên khoa theo hẹn.`),
-T(`Suy tim ở trẻ nhũ nhi có thể biểu hiện bằng thở nhanh, bú kém, vã mồ hôi khi bú, chậm tăng cân, gan to. Không phải đợi trẻ phù chân như người lớn. Nếu có luồng thông trái-phải lớn, sau vài tuần sức cản mạch phổi giảm, lưu lượng lên phổi tăng và triệu chứng xuất hiện rõ.`),
+T(`Minh thầm nghĩ: Suy tim ở trẻ nhũ nhi có thể biểu hiện bằng thở nhanh, bú kém, vã mồ hôi khi bú, chậm tăng cân, gan to. Không phải đợi trẻ phù chân như người lớn. Nếu có luồng thông trái-phải lớn, sau vài tuần sức cản mạch phổi giảm, lưu lượng lên phổi tăng và triệu chứng xuất hiện rõ.`),
 H('Một lỗ thông, hai bên áp lực'),
 P(`Siêu âm tim xác nhận thông liên thất có ý nghĩa huyết động, luồng thông trái sang phải, tăng gánh tuần hoàn phổi. Hình ảnh X-quang gợi tim to và tăng tuần hoàn phổi được đối chiếu với lâm sàng. Bác sĩ Hiếu hỏi: “Vì sao bé lúc mới sinh không khó thở như vậy?”
 
 Minh hình dung hệ tuần hoàn sau sinh. Lúc đầu sức cản mạch phổi còn tương đối cao nên luồng thông có thể chưa lớn. Khi sức cản giảm trong những tuần đầu, máu từ thất trái sang thất phải qua lỗ thông nhiều hơn; tăng máu lên phổi, tăng gánh tim, dẫn tới thở nhanh và bú mệt.
 
-“Giải thích như thế mới là hiểu bệnh,” Hiếu nhận xét. “Không phải thấy lỗ thông là tự động kết luận suy tim.”
+Bác sĩ Hiếu nhận xét: “Giải thích như thế mới là hiểu bệnh.” Bác sĩ Hiếu nói: “Không phải thấy lỗ thông là tự động kết luận suy tim.”
 
 Minh đồng ý. Kích thước lỗ thông, vị trí, áp lực, chức năng tim, triệu chứng và tăng trưởng đều cần được đánh giá.`),
 S(`NHIỆM VỤ TIM MẠCH — HUYẾT ĐỘNG.
@@ -421,11 +421,11 @@ Minh còn nhắc cần theo dõi cân nặng hằng ngày, lượng vào-ra, nh�
 H('Lời dặn trước cửa phòng'),
 P(`Mẹ Nam hỏi có phải con phải phẫu thuật ngay không. Minh không tự đưa ra chỉ định can thiệp. Cậu giải thích trước mắt bác sĩ chuyên khoa sẽ đánh giá đáp ứng thuốc, mức độ luồng thông và tình trạng phát triển để lên kế hoạch dài hạn; điều trị nội khoa không đồng nghĩa lỗ thông tự đóng.
 
-“Chị theo dõi bé bú bao nhiêu, số lần tiểu, khó thở khi nghỉ, ra mồ hôi khi bú, cân nặng và dấu tím. Nếu bé thở mệt tăng, bú kém rõ, ngủ li bì, tiểu ít hoặc tím thì phải báo ngay. Thuốc lợi tiểu cần dùng đúng chỉ định, không tự tăng liều chỉ vì bé thở nhanh.”
+Minh nói: “Chị theo dõi bé bú bao nhiêu, số lần tiểu, khó thở khi nghỉ, ra mồ hôi khi bú, cân nặng và dấu tím. Nếu bé thở mệt tăng, bú kém rõ, ngủ li bì, tiểu ít hoặc tím thì phải báo ngay. Thuốc lợi tiểu cần dùng đúng chỉ định, không tự tăng liều chỉ vì bé thở nhanh.”
 
 Bác sĩ Hiếu im lặng lắng nghe rồi quay sang An Nhiên: “Lấy phiếu theo dõi cân nặng cho mẹ.”
 
-Đến cuối ca, anh gọi Minh lại. “Thầy sẽ cho em dự một buổi hội chẩn tim bẩm sinh. Nhưng lần này sẽ có một ca không đủ giải thích bằng suy tim thông thường.”`),
+Đến cuối ca, anh gọi Minh lại. Bác sĩ Hiếu nói: “Thầy sẽ cho em dự một buổi hội chẩn tim bẩm sinh. Nhưng lần này sẽ có một ca không đủ giải thích bằng suy tim thông thường.”`),
 S(`HOÀN THÀNH NHIỆM VỤ.
 Kỹ năng mở: SINH LÝ BỆNH SHUNT TRÁI–PHẢI.
 Kỹ năng tăng: THEO DÕI NƯỚC–ĐIỆN GIẢI.
@@ -440,24 +440,24 @@ Một thực tập sinh khác nói nhỏ: “Tiếng thổi to hơn chắc bện
 
 Minh tự hỏi: tiếng thổi phản ánh dòng máu hỗn loạn và chênh áp, không luôn tương ứng mức độ nặng. Một lỗ thông nhỏ hạn chế có thể gây tiếng thổi rõ, trong khi lỗ lớn có chênh áp thấp hơn nhưng hậu quả huyết động lớn hơn.
 
-Bác sĩ Hiếu nhìn cả phòng. “Nếu chỉ được nhìn hai tờ khám ban đầu, các em sẽ chọn ai cần theo dõi sát hơn?”
+Bác sĩ Hiếu nhìn cả phòng. Bác sĩ Hiếu hỏi: “Nếu chỉ được nhìn hai tờ khám ban đầu, các em sẽ chọn ai cần theo dõi sát hơn?”
 
-Minh đưa mắt về bé sáu tháng. “Em cần biết mức ảnh hưởng huyết động và tình trạng phát triển của trẻ, không xếp thứ tự bằng độ lớn của âm thổi.”`),
+Minh đưa mắt về bé sáu tháng. Minh đáp: “Em cần biết mức ảnh hưởng huyết động và tình trạng phát triển của trẻ, không xếp thứ tự bằng độ lớn của âm thổi.”`),
 H('Ba cánh cửa chẩn đoán'),
 P(`Cậu trình bày theo một trục rõ ràng. Trước hết xem trẻ tím hay không tím, oxy máu và dấu suy hô hấp. Sau đó nghĩ có luồng thông trái-phải gây tăng tuần hoàn phổi, tổn thương cản trở dòng máu hay bất thường phức tạp. Cuối cùng đối chiếu tiếng thổi, mạch ngoại biên, gan, cân nặng, X-quang, ECG và siêu âm tim.
 
 Bé sáu tuổi ổn định, chưa có suy tim: theo dõi tăng trưởng, triệu chứng, siêu âm định kỳ theo chuyên khoa, chăm sóc răng miệng và tư vấn hoạt động. Bé sáu tháng có dấu suy tim: cần đánh giá và điều trị sung huyết, dinh dưỡng và lập kế hoạch can thiệp khi có chỉ định. Minh không vượt ranh giới để quyết định phẫu thuật trong buổi giao ban Y6.
 
-“Rất tốt,” Hiếu nói. “Nhưng nếu bé đột ngột tím, SpO₂ giảm, khó thở và tri giác xấu thì sao?”
+Bác sĩ Hiếu nói: “Rất tốt.” Bác sĩ Hiếu hỏi: “Nhưng nếu bé đột ngột tím, SpO₂ giảm, khó thở và tri giác xấu thì sao?”
 
-“Đó là tình huống cấp cứu, không chờ buổi tái khám. Em sẽ đánh giá ABC, hỗ trợ hô hấp theo chỉ định, báo bác sĩ ngay và nghĩ đến bệnh tim bẩm sinh tím hay biến chứng khác, không cố ép mọi dữ kiện vào thông liên thất đơn thuần.”`),
+Minh nói: “Đó là tình huống cấp cứu, không chờ buổi tái khám. Em sẽ đánh giá ABC, hỗ trợ hô hấp theo chỉ định, báo bác sĩ ngay và nghĩ đến bệnh tim bẩm sinh tím hay biến chứng khác, không cố ép mọi dữ kiện vào thông liên thất đơn thuần.”`),
 S(`BOSS TIM MẠCH — LỐI TƯ DUY.
 Câu hỏi: Bệnh tim bẩm sinh được phân tầng bằng tiếng thổi, hay bằng giải phẫu + huyết động + biểu hiện lâm sàng?
 Dữ liệu cũ đã kết nối: Ngưỡng nhịp thở, suy tim nhũ nhi, cân bằng dịch, dấu sốc.`),
 H('Chiếc phong bì màu xanh'),
 P(`Kết thúc hội chẩn, bác sĩ Hiếu để lại một phong bì mỏng trên bàn. Trên mặt phong bì không có tên, chỉ có ngôi sao sáu cánh màu xanh và dòng chữ ECHO–07.
 
-“Em nhìn thấy nó ở đâu rồi, phải không?” anh hỏi.
+Bác sĩ Hiếu hỏi: “Em nhìn thấy nó ở đâu rồi, phải không?”
 
 Minh không trả lời. Vì ở khoảnh khắc ấy, mọi tiếng ồn trong bệnh viện biến mất. Hệ thống, vốn luôn hiện lên trong đầu một mình cậu, đột ngột phát ra âm thanh đủ lớn để Minh tưởng cả phòng đều nghe thấy.
 
@@ -465,9 +465,9 @@ HỒ SƠ TRUNG TÂM ĐANG ĐƯỢC MỞ.
 
 Thầy Hiếu nhìn thẳng vào Minh. Lần đầu tiên, Minh thấy trong ánh mắt người bác sĩ không phải sự kinh ngạc trước kiến thức một sinh viên, mà là một nỗi lo cũ.
 
-“Lâm Minh,” anh nói rất khẽ. “Nếu một ngày hệ thống bắt em chọn giữa điểm kinh nghiệm và tính mạng một bệnh nhi, em sẽ chọn gì?”
+Bác sĩ Hiếu nói rất khẽ: “Lâm Minh.” Bác sĩ Hiếu hỏi: “Nếu một ngày hệ thống bắt em chọn giữa điểm kinh nghiệm và tính mạng một bệnh nhi, em sẽ chọn gì?”
 
-Minh không do dự. “Em chọn bệnh nhi.”
+Minh không do dự. Minh đáp: “Em chọn bệnh nhi.”
 
 Hệ thống im lặng ba giây dài đến bất tận.`),
 S(`THỬ THÁCH ẨN HOÀN THÀNH.

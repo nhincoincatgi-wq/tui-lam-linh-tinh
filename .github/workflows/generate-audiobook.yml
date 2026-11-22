@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/generate-audiobook.yml"
       - "scripts/generate_audio.py"
+      - "stories.js"
 permissions:
   contents: write
 concurrency:
