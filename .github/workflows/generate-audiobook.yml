@@ -1,0 +1,41 @@
+name: Generate Vietnamese audiobook MP3
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/generate-audiobook.yml"
+      - "scripts/generate_audio.py"
+permissions:
+  contents: write
+concurrency:
+  group: generate-story-audio
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install speech synthesizers
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg
+          python -m pip install --disable-pip-version-check edge-tts
+      - name: Generate audiobooks (neural voice with offline fallback)
+        run: python scripts/generate_audio.py
+      - name: Commit audio to site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio/*.mp3
+          if ! git diff --cached --quiet; then
+            git commit -m "Add Vietnamese audiobook MP3 for background playback"
+            git push origin HEAD:main
+          fi
