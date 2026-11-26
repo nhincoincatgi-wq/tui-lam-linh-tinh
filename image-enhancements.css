@@ -1,0 +1,35 @@
+/* Bệnh viện không ngủ — picture layer. Load after threads.css. */
+.story-image { margin: 14px 0 18px; padding: 0; border: 0; overflow: hidden; }
+.story-image[hidden] { display: none !important; }
+.story-image__open { display: block; width: 100%; margin: 0; padding: 0; line-height: 0; border: 0; background: none; border-radius: 12px; overflow: hidden; cursor: zoom-in; }
+.story-image__open img { display: block; width: 100%; height: auto; object-fit: cover; transition: transform .25s ease; }
+.story-image__open:hover img { transform: scale(1.017); }
+.story-image figcaption { color: var(--muted); font: 500 11px/1.6 var(--sans); margin: 9px 2px 0; }
+.story-image--card { margin: 12px 0 13px; }
+.story-image--card .story-image__open { border-radius: 12px; }
+.story-image--card img { width: 100%; aspect-ratio: 2.18 / 1; object-fit: cover; background: var(--panel); }
+.story-image--reader-cover { margin: 20px 0 18px; }
+.story-image--reader-cover .story-image__open { border-radius: 16px; }
+.story-image--reader-cover img { aspect-ratio: 2.05 / 1; object-fit: cover; background: var(--panel); }
+.story-image--scene { margin: 17px 0 24px 47px; max-width: calc(100% - 47px); }
+.story-image--scene .story-image__open { border-radius: 15px; }
+.story-image--scene img { width: 100%; max-height: 570px; object-fit: cover; object-position: center 40%; background: var(--panel); }
+.story-dept-banner { display: block; width: 100%; height: 84px; object-fit: cover; border-radius: 11px; margin: 0 0 13px; background: var(--panel); }
+.story-filter-banner { overflow: hidden; position: relative; isolation: isolate; margin: 6px 0 18px; border-radius: 15px; min-height: 155px; border: 1px solid var(--border); }
+.story-filter-banner img { display: block; width: 100%; height: 170px; object-fit: cover; }
+.story-filter-banner:after { content: ''; display: block; position: absolute; inset: 0; z-index: 0; background: linear-gradient(0deg,rgba(5,7,15,.76),transparent 78%); pointer-events: none; }
+.story-filter-banner__title { position: absolute; z-index: 1; bottom: 16px; left: 19px; right: 12px; color: white; font: 800 18px/1.3 var(--sans); text-shadow: 0 2px 7px #0009; }
+.story-image-viewer { position: fixed; inset: 0; z-index: 9999; padding: 50px 13px 16px; display: grid; place-items: center; background: rgba(4,5,9,.94); backdrop-filter: blur(8px); overflow-y: auto; }
+.story-image-viewer img { display: block; max-width: min(98vw, 1100px); max-height: calc(100dvh - 80px); width: auto; height: auto; border-radius: 10px; object-fit: contain; }
+.story-image-viewer__close { position: fixed; right: 16px; top: 15px; z-index: 1; border: 1px solid #ffffff50; color: white; background: #222b; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+@media(max-width:560px){
+ .story-dept-banner { height: 68px; border-radius: 8px; }
+ .story-image--reader-cover { margin: 16px -4px 10px; }
+ .story-image--reader-cover .story-image__open { border-radius: 13px; }
+ .story-image--reader-cover img { aspect-ratio: 2 / 1; }
+ .story-image--scene { margin: 12px 0 22px 42px; max-width: calc(100% - 42px); }
+ .story-image--scene img { max-height: 470px; }
+ .story-filter-banner img { height: 143px; }
+ .story-filter-banner__title { font-size: 16px; }
+}
+@media(prefers-reduced-motion: reduce){ .story-image__open img { transition: none; } }
