@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luyện sinh hiệu & công thức máu Nhi</title>
+<style>
+:root{color-scheme:dark;--bg:#101827;--card:#192539;--ink:#f3f6fc;--dim:#b7c6db;--line:#435675;--accent:#95ebd1;--good:#a4f3c4;--bad:#ffb5b2} :root.light{color-scheme:light;--bg:#eef3fa;--card:white;--ink:#142239;--dim:#435675;--line:#9aaac0;--accent:#076353;--good:#116339;--bad:#9f2822}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.55 system-ui,sans-serif} main{max-width:780px;margin:auto;padding:24px 16px 48px} header,nav,.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px} header{justify-content:space-between} h1{font-size:clamp(1.5rem,5vw,2.25rem);line-height:1.15;margin:0} h2{font-size:1.3rem;line-height:1.4} p{margin:8px 0 14px} .muted,summary{color:var(--dim)} section,details{padding:clamp(14px,4vw,24px);background:var(--card);border:1px solid var(--line);border-radius:16px;margin:16px 0} button,select{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 12px;cursor:pointer} button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:750} button:hover:not(:disabled){border-color:var(--accent)} button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px} .primary{background:var(--accent);color:var(--bg);font-weight:750} .light .primary{color:white} .answers{display:grid;gap:9px;margin:16px 0} .answers button{text-align:left;display:flex;gap:12px} .answers b{color:var(--accent)} .answers .right{border:2px solid var(--good);color:var(--good)} .answers .wrong{border:2px solid var(--bad);color:var(--bad)} button:disabled{cursor:default;opacity:1} progress{width:100%;accent-color:var(--accent)} .feedback{border-left:3px solid var(--accent);padding-left:12px;margin-bottom:16px} table{border-collapse:collapse;width:100%;margin:8px 0 18px} td,th{text-align:left;padding:7px;border-bottom:1px solid var(--line)} .scroll{overflow:auto} summary{cursor:pointer} [hidden]{display:none!important}
+:root{--bg:#160d21;--card:#291a37;--ink:#fff9eb;--dim:#e6d8eb;--line:#9984a8;--accent:#efcaff;--good:#ccffdc;--bad:#ffe0df;--choice:#392749;--okbg:#15452b;--errbg:#641d30}:root.light{--bg:#f6efdf;--card:#fffdf6;--ink:#26152f;--dim:#4d3c55;--line:#816c8c;--accent:#582274;--good:#074c29;--bad:#83132a;--choice:#f4eaf8;--okbg:#d2f6df;--errbg:#ffe0e2}header{background:#45205b;color:#fff8e8;padding:20px;border-radius:16px}header button{color:var(--ink)}.answers button{background:var(--choice);align-items:center;font-weight:600}.answers b{background:var(--accent);color:var(--bg);border-radius:6px;padding:1px 9px}.answers .right{background:var(--okbg)}.answers .wrong{background:var(--errbg)}button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
+</style>
+<main>
+<header><h1>Luyện sinh hiệu &amp; công thức máu Nhi</h1><button id="theme" type="button">Giao diện sáng</button></header>
+<p class="muted">Học thuộc từng mốc trong bảng trước. Khi đã nhớ, chuyển sang làm ca và luyện các giá trị sát ngưỡng.</p>
+<section>
+<nav aria-label="Chặng luyện">
+<button id="theory" aria-pressed="true">1. Học bảng</button>
+<button id="cases" aria-pressed="false">2. Làm case</button>
+</nav>
+<p id="phase"></p>
+<nav aria-label="Thiết lập lượt luyện">
+<label>Chủ đề <select id="topic"><option value="">Trộn tất cả</option></select></label>
+<label>Số câu <select id="length"><option value="all" selected>Toàn bộ</option><option>10</option><option>20</option><option>40</option></select></label>
+<button id="start" class="primary">Đề mới</button><button id="retry">Ôn mốc hay sai</button>
+</nav>
+<p id="status" class="muted" role="status"></p>
+</section>
+<section id="quiz">
+<div class="bar"><strong id="counter"></strong><span id="tag" class="muted"></span></div>
+<progress id="progress" aria-label="Tiến độ lượt luyện"></progress>
+<h2 id="question" tabindex="-1"></h2>
+<div class="answers" id="answers"></div>
+<div id="feedback" class="feedback" aria-live="polite" hidden></div>
+<button id="next" class="primary" hidden>Câu tiếp</button>
+<p class="muted">Phím A–D hoặc 1–4 để chọn. Enter để tiếp tục.</p>
+</section>
+<section id="results" hidden></section>
+<details><summary>Bảng tra và các mốc bỏ trống trong tài liệu</summary><div id="reference" class="scroll"></div></details>
+</main>
+<script>
+'use strict';
+const topics=['Nhịp thở & sốt','Mạch','Huyết áp','Hemoglobin','MCV, MCH & tiểu cầu','WBC & Neutrophil'];
+const bank=[];
+const refs=[];
+const fmt=n=>String(Number(n.toFixed(3))).replace('.',',');
+const signed=(s,n,u)=>s+' '+fmt(n)+' '+u;
+const add=(t,id,q,choices,why,mode="case")=>bank.push({t,id,key:bank.length,q,choices,why,mode});
+const breaths=[['< 2 tháng',60,1],['2 tháng – < 1 tuổi',50,2,11],['1 – < 5 tuổi',40,12,59],['≥ 5 tuổi',20,60,72]];
+const pulses=[['1 – < 3 tháng',170,120,1,2],['3 tháng – < 2 tuổi',160,100,3,23],['2 – < 6 tuổi',140,80,24,71],['6 – < 12 tuổi',130,70,72,143],['12 – < 16 tuổi',120,60,144,180]];
+const hb=[['2 – < 6 tháng',9.5,null,null,[2,5]],['6 tháng – < 6 tuổi',11,10,7,[6,12,71]],['6 – < 12 tuổi',11.5,11,8,[72,120,143]],['Nữ > 12 tuổi',12,11,8,[156,168]],['Nam > 12 tuổi',13,11,8,[156,168]]];
+const wbc=[['2 tháng – < 2 tuổi',17.5,2,12,23],['2 – < 6 tuổi',15.5,24,48,71],['≥ 6 tuổi',13.5,72,84,120]];
+const age=m=>m<12?m+' tháng':m%12?(Math.floor(m/12)+' tuổi '+m%12+' tháng'):(m/12+' tuổi');
+const threshold=(t,id,label,sign,n,unit,near,context='')=>{
+  const correct=signed(sign,n,unit);
+  const mode=t===2&&context?'case':'theory';
+  const flip={'≥':'>','>':'≥','<':'≤','≤':'<'}[sign];
+  add(t,id,'Theo bảng, ngưỡng '+label+' là bao nhiêu? '+context,
+    [correct,signed(flip,n,unit),...near.map(x=>signed(sign,x,unit))].slice(0,4),
+    'Mốc cần nhớ: '+correct+'. '+(['≥','≤'].includes(sign)?'Giá trị đúng bằng ngưỡng được tính.':'Giá trị đúng bằng ngưỡng nằm ngoài tiêu chuẩn này.'),mode);
+};
+function boundary(t,id,stem,n,step,unit,sign){
+  // Use single-answer sets with three nearby values on the opposite side of the cut-off.
+  const inclusive=sign==='≥'||sign==='≤';
+  const direction=sign==='≥'||sign==='>'?1:-1;
+  const why='Ngưỡng là '+signed(sign,n,unit)+'. '+(inclusive?'Tính cả giá trị bằng ngưỡng.':'Dấu bất đẳng thức là dấu nghiêm ngặt.');
+  for(const at of [true,false]){
+    const start=n+(at?(inclusive?0:direction*step):(inclusive?-direction*step:0));
+    const other=n+(at?(inclusive?-direction*step:0):(inclusive?0:direction*step));
+    const values=[start,...[0,1,2].map(i=>other+(at?-1:1)*direction*i*step)];
+    add(t,id,stem+' Giá trị nào '+(at?'đạt':'chưa đạt')+' tiêu chuẩn này?',values.map(x=>fmt(x)+' '+unit),why);
+  }
+}
+refs.push(['Nhịp thở',['Tuổi','Thở nhanh (lần/phút)'],breaths.map(([a,n])=>[a,'≥ '+n])]);
+breaths.forEach(([a,n,...ages],i)=>{
+  threshold(0,'thở'+i,'thở nhanh ở trẻ '+a,'≥',n,'lần/phút',breaths.filter(x=>x[1]!==n).sort((x,y)=>Math.abs(x[1]-n)-Math.abs(y[1]-n)).slice(0,2).map(x=>x[1]));
+  ages.forEach(m=>boundary(0,'thở'+i,'Trẻ '+age(m)+'. Xét tiêu chuẩn thở nhanh.',n,1,'lần/phút','≥'));
+});
+threshold(0,'sốt','sốt khi đo nhiệt độ hậu môn','>',38,'°C',[37.5,38.5]);
+boundary(0,'sốt','Đo nhiệt độ hậu môn. Xét tiêu chuẩn sốt theo file.',38,0.1,'°C','>');
+refs.push(['Mạch khi trẻ nằm yên, không sốt',['Tuổi','Nhanh (lần/phút)','Chậm (lần/phút)'],pulses.map(([a,h,l])=>[a,'≥ '+h,'≤ '+l])]);
+pulses.forEach(([a,h,l,...ages],i)=>{
+  [h,l].forEach((n,j)=>{
+    const label=j?'mạch chậm':'mạch nhanh',sign=j?'≤':'≥',id='mạch'+i+j;
+    const neighbors=pulses.map(x=>x[j+1]).filter(x=>x!==n).sort((x,y)=>Math.abs(x-n)-Math.abs(y-n));
+    threshold(1,id,label+' ở trẻ '+a,sign,n,'lần/phút',neighbors.slice(0,2));
+    ages.forEach(m=>boundary(1,id,'Trẻ '+age(m)+' nằm yên, không sốt. Xét tiêu chuẩn '+label+'.',n,1,'lần/phút',sign));
+  });
+  const near=pulses[i===0?1:i-1];
+  add(1,'mạch'+i+'0','Ở trẻ '+a+' nằm yên, không sốt, cặp ngưỡng mạch nhanh / mạch chậm nào đúng (lần/phút)?',
+    ['≥ '+h+' / ≤ '+l,'≥ '+near[1]+' / ≤ '+l,'≥ '+h+' / ≤ '+near[2],'≥ '+near[1]+' / ≤ '+near[2]],'Nhóm '+a+' có mạch nhanh từ '+h+' và mạch chậm từ '+l+' trở xuống.');
+});
+add(1,'đo mạch','Chọn điều kiện đo mạch phù hợp để đối chiếu bảng theo tuổi.',['Trẻ nằm yên và không sốt','Trẻ nằm yên nhưng đang sốt','Trẻ vừa vận động và không sốt','Trẻ đang khóc và không sốt'],'Bảng mạch trong file áp dụng khi trẻ nằm yên và không sốt.','theory');
+refs.push(['Hạ huyết áp',['Tuổi','HATT (mmHg)'],[['1 – < 12 tháng','< 70'],['1 – 10 tuổi','< 70 + 2 × tuổi'],['> 10 tuổi','< 90']]]);
+[1,11,12,24,36,48,60,72,84,96,108,120,132,156].forEach(m=>{
+  const id=m<12?'ha nhũ nhi':m<=120?'ha công thức':'ha lớn';
+  const n=m<12?70:m<=120?70+2*(m/12):90;
+  if(m>=12&&m<=120) threshold(2,id,'HATT giảm ở trẻ '+age(m),'<',n,'mmHg',[n-2,n+2],'Dùng công thức theo tuổi.');
+  boundary(2,id,'Trẻ '+age(m)+'. Xét tiêu chuẩn HATT giảm.',n,1,'mmHg','<');
+});
+add(2,'ha công thức','Công thức nào dùng để xác định HATT giảm ở trẻ từ 1 đến 10 tuổi, với n là tuổi tính theo năm?',['< 70 + 2n','≤ 70 + 2n','< 70 + n','< 80 + 2n'],'HATT phải thấp hơn 70 + 2n mmHg. Trẻ 10 tuổi có ngưỡng < 90 mmHg.','theory');
+refs.push(['Hemoglobin (g/dL)',['Tuổi / giới','Thiếu máu','Nhẹ','Trung bình','Nặng'],hb.map(([a,n,l,b])=>[a,'< '+fmt(n),l===null?'—':fmt(l)+' – '+fmt(n-0.1),b===null?'—':fmt(b)+' – '+fmt(l-0.1),b===null?'—':'< '+fmt(b)])]);
+hb.forEach(([a,n,l,b,ages],i)=>{
+  threshold(3,'hb'+i,'thiếu máu ở nhóm '+a,'<',n,'g/dL',hb.map(x=>x[1]).filter(x=>x!==n).sort((x,y)=>Math.abs(x-n)-Math.abs(y-n)).slice(0,2));
+  const sex=i===3?'Nữ ':i===4?'Nam ':'Trẻ ';
+  ages.forEach(m=>{
+    boundary(3,'hb'+i,sex+age(m)+'. Xét tiêu chuẩn thiếu máu.',n,0.1,'g/dL','<');
+    if(l===null)return;
+    const labels=['Chưa đạt ngưỡng thiếu máu','Thiếu máu nhẹ','Thiếu máu trung bình','Thiếu máu nặng'];
+    [...new Set([n,n-0.1,l,l-0.1,b,b-0.1,10.9,11.0,11.5,12.0])].forEach(v=>{
+      const k=v>=n?0:v>=l?1:v>=b?2:3;
+      add(3,'hb'+i+' độ',sex+age(m)+', Hb '+fmt(v)+' g/dL. Phân độ theo bảng?',
+        [labels[k],...labels.filter((_,j)=>j!==k)],'Nhóm '+a+': nhẹ '+fmt(l)+'–'+fmt(n-0.1)+', trung bình '+fmt(b)+'–'+fmt(l-0.1)+', nặng < '+fmt(b)+' g/dL.');
+    });
+  });
+});
+add(3,'hb giới','Hai trẻ 13 tuổi, cùng Hb 12,0 g/dL, một nam và một nữ. Kết quả đối chiếu bảng là gì?',['Nam thiếu máu nhẹ, nữ chưa đạt ngưỡng thiếu máu','Nữ thiếu máu nhẹ, nam chưa đạt ngưỡng thiếu máu','Cả hai thiếu máu nhẹ','Cả hai chưa đạt ngưỡng thiếu máu'],'Nam > 12 tuổi có ngưỡng < 13 g/dL. Nữ > 12 tuổi có ngưỡng < 12 g/dL.');
+const indices=[['MCV',70,85,'fL',1],['MCH',27,31,'pg',1],['PLT',150,450,'K/µL',1]];
+refs.push(['Chỉ số hồng cầu và tiểu cầu',['Chỉ số','Giảm','Tăng'],indices.map(([a,l,h,u])=>[a,signed('<',l,u),signed('>',h,u)])]);
+indices.forEach(([name,l,h,u,step])=>{
+  threshold(4,name+' giảm',name+' giảm','<',l,u,[l-5,l+5]);
+  threshold(4,name+' tăng',name+' tăng','>',h,u,[h-5,h+5]);
+  [['giảm',l,'<'],['tăng',h,'>']].forEach(([direction,n,s])=>boundary(4,name+' '+direction,'Xét tiêu chuẩn '+name+' '+direction+' theo bảng.',n,step,u,s));
+});
+refs.push(['Bạch cầu',['Chỉ số / tuổi','Ngưỡng'],[['WBC giảm','< 4 K/µL'],...wbc.map(([a,n])=>['WBC tăng, '+a,'≥ '+fmt(n)+' K/µL']),['Neu tăng','> +2 SD'],['Neu giảm, < 1 tuổi','< 1.000/mm³'],['Neu giảm, > 1 tuổi','< 1.500/mm³']]]);
+wbc.forEach(([a,n,...ages],i)=>{
+  threshold(5,'wbc'+i,'WBC tăng ở trẻ '+a,'≥',n,'K/µL',wbc.map(x=>x[1]).filter(x=>x!==n));
+  ages.forEach(m=>boundary(5,'wbc'+i,'Trẻ '+age(m)+'. Xét tiêu chuẩn WBC tăng.',n,0.1,'K/µL','≥'));
+});
+threshold(5,'wbc giảm','WBC giảm','<',4,'K/µL',[3.5,4.5]);
+boundary(5,'wbc giảm','Xét tiêu chuẩn WBC giảm.',4,0.1,'K/µL','<');
+[ [10,1000],[13,1500] ].forEach(([m,n])=>{
+  const id='neu'+m;
+  threshold(5,id,'giảm số lượng Neu tuyệt đối ở trẻ '+age(m),'<',n,'/mm³',[n===1000?1500:1000,2000]);
+  boundary(5,id,'Trẻ '+age(m)+'. Xét tiêu chuẩn giảm số lượng Neu tuyệt đối.',n,1,'/mm³','<');
+});
+[[8,1,90],[14,2,65],[36,2,75],[9,2,50],[60,5,18]].forEach(([m,w,p])=>{
+  const n=w*p*10,cut=m<12?1000:1500;
+  add(5,m<12?'neu10':'neu13','Trẻ '+age(m)+', WBC '+fmt(w)+' K/µL, Neu '+p+'%. Số lượng Neu tuyệt đối và nhận định nào đúng?',
+    [n+'/mm³ · '+(n<cut?'giảm':'chưa đạt ngưỡng giảm'),n+'/mm³ · '+(n<cut?'chưa đạt ngưỡng giảm':'giảm'),n*10+'/mm³ · chưa đạt ngưỡng giảm',n/10+'/mm³ · giảm'],
+    'Số lượng Neu tuyệt đối = '+fmt(w)+' × 1.000 × '+p+'% = '+n+'/mm³. Ngưỡng giảm ở tuổi này là < '+cut+'/mm³.');
+});
+add(5,'neu tăng','Theo file, tiêu chí nào được dùng để nhận diện Neu tăng?',['Số lượng Neu vượt +2 SD','Số lượng Neu bằng +2 SD','Số lượng Neu ≥ 1.500/mm³','Tỷ lệ Neu > 50%'],'Tài liệu ghi > +2 SD cho Neu tăng. 1.500/mm³ là mốc dùng để xét Neu giảm ở trẻ > 1 tuổi.','theory');
+function fact(t,id,q,choices,why){
+  add(t,id,q,choices,why,'theory');
+}
+threshold(2,'ha nhũ nhi','HATT giảm ở trẻ 1 tháng – < 12 tháng','<',70,'mmHg',[72,90]);
+threshold(2,'ha lớn','HATT giảm ở trẻ > 10 tuổi','<',90,'mmHg',[88,92]);
+fact(2,'ha chỉ số','Dùng chỉ số nào để đối chiếu ngưỡng hạ huyết áp theo bảng?',
+  ['Huyết áp tâm thu','Huyết áp tâm trương','Huyết áp trung bình','Hiệu áp'],'Các ngưỡng 70, 70 + 2n và 90 mmHg áp dụng cho huyết áp tâm thu.');
+fact(0,'đo sốt','Ngưỡng sốt > 38°C trong file áp dụng cho vị trí đo nào?',
+  ['Hậu môn','Nách','Miệng','Tai'],'File ghi nhiệt độ hậu môn > 38°C.');
+[['nhanh',95,5],['chậm',5,95]].forEach(([label,n,opposite])=>{
+  fact(1,'bách phân vị '+label,'Ngưỡng mạch '+label+' trong bảng tương ứng bách phân vị nào theo tuổi?',
+    [n,opposite,50,label==='nhanh'?90:10].map(x=>'Bách phân vị thứ '+x),
+    'File ghi mạch '+label+' tương ứng bách phân vị thứ '+n+' theo tuổi, lúc trẻ nằm yên và không sốt.');
+});
+hb.forEach(([a,n,l,b],i)=>{
+  if(l===null){
+    fact(3,'hb'+i+' độ','Bảng ghi gì về phân độ thiếu máu ở nhóm '+a+'?',
+      ['Chỉ ghi ngưỡng thiếu máu','Có đủ ba mức nhẹ, trung bình và nặng','Chỉ ghi phân độ nhẹ và nặng','Chỉ ghi phân độ nặng'],
+      'Ở nhóm này file ghi Hb < 9,5 g/dL là thiếu máu. Các ô phân độ để trống.');
+    return;
+  }
+  const band=(low,high)=>fmt(low)+'–'+fmt(high)+' g/dL';
+  fact(3,'hb'+i+' độ','Nhóm '+a+' có khoảng Hb thiếu máu nhẹ là bao nhiêu?',
+    [band(l,n-0.1),band(l-0.1,n-0.1),band(l,n),band(l+0.1,n-0.1)],
+    'Mức nhẹ từ '+fmt(l)+' đến '+fmt(n-0.1)+' g/dL theo bảng.');
+  fact(3,'hb'+i+' độ','Nhóm '+a+' có khoảng Hb thiếu máu trung bình là bao nhiêu?',
+    [band(b,l-0.1),band(b-0.1,l-0.1),band(b,l),band(b+0.1,l-0.1)],
+    'Mức trung bình từ '+fmt(b)+' đến '+fmt(l-0.1)+' g/dL theo bảng.');
+  threshold(3,'hb'+i+' độ','thiếu máu nặng ở nhóm '+a,'<',b,'g/dL',[b-1,b+1]);
+});
+fact(4,'MCH giảm','Trong file, MCH < 27 pg tương ứng nhận định nào?',
+  ['Nhược sắc','Ưu sắc','Hồng cầu nhỏ','Giảm tiểu cầu'],'File dùng MCH < 27 pg cho nhược sắc.');
+fact(4,'MCH tăng','Trong file, MCH > 31 pg tương ứng nhận định nào?',
+  ['Ưu sắc','Nhược sắc','Hồng cầu to','Tăng tiểu cầu'],'File dùng MCH > 31 pg cho ưu sắc.');
+fact(5,'wbc tăng sd','File mô tả ngưỡng WBC tăng theo phân bố tuổi bằng tiêu chí nào?',
+  ['Vượt +2 SD theo tuổi','Vượt +1 SD theo tuổi','Thấp hơn −2 SD theo tuổi','Thấp hơn −1 SD theo tuổi'],
+  'Phần mô tả ghi > +2 SD theo tuổi. Khi hỏi các mốc số cụ thể, dùng dấu ≥ đúng như bảng.');
+fact(5,'neu10','Chọn công thức tính số lượng Neu tuyệt đối (/mm³) khi WBC ghi bằng K/µL.',
+  ['WBC × 1.000 × (Neu% / 100)','WBC × (Neu% / 100)','WBC × 1.000 × Neu% dạng số nguyên','WBC × 1.000 ÷ Neu% dạng số nguyên'],
+  'Đổi WBC từ K/µL sang tế bào/µL bằng cách nhân 1.000. Sau đó nhân tỷ phần Neu. 1 µL bằng 1 mm³.');
+
+const $=id=>document.getElementById(id);
+const storageKey='nhi-sinh-hieu-ctm-v1';
+let storageOK=true;
+let saved={stats:{},recent:[],light:true};
+try{
+  const previous=JSON.parse(localStorage.getItem(storageKey));
+  if(previous?.stats && Array.isArray(previous.recent)) saved=previous;
+  localStorage.setItem(storageKey,JSON.stringify(saved));
+}catch{storageOK=false;}
+function save(){
+  try{localStorage.setItem(storageKey,JSON.stringify(saved));}
+  catch{storageOK=false;}
+}
+function el(tag,value){
+  const node=document.createElement(tag);
+  if(value!==undefined)node.textContent=value;
+  return node;
+}
+function shuffle(items){
+  const copy=[...items];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
+}
+topics.forEach((name,i)=>{
+  const option=el('option',name);
+  option.value=i;
+  $('topic').append(option);
+});
+refs.forEach(([title,head,rows])=>{
+  const table=el('table'),header=table.createTHead().insertRow(),body=table.createTBody();
+  head.forEach(label=>header.append(el('th',label)));
+  rows.forEach(row=>{
+    const tr=body.insertRow();
+    row.forEach(value=>tr.append(el('td',value)));
+  });
+  $('reference').append(el('h2',title),table);
+});
+$('reference').append(el('p','Bảng dùng để ôn đúng tài liệu gốc. File bỏ trống nhóm đúng 12 tuổi ở bảng Hb, đúng 1 tuổi ở ngưỡng Neu giảm và phân độ Hb ở trẻ 2–< 6 tháng. Các câu MCV, MCH và PLT dùng ngưỡng chung ghi trong file.'));
+function theme(){
+  document.documentElement.classList.toggle('light',saved.light);
+  $('theme').textContent=saved.light?'Giao diện tối':'Giao diện sáng';
+}
+$('theme').onclick=()=>{saved.light=!saved.light;save();theme();};
+theme();
+let mode="theory";
+let round=[],position=0,pending=[],repeated=new Set(),missed=[],correct=0,answered=false,baseCount=0,reviewCount=0,current;
+const weak=id=>saved.stats[id]?.debt||0;
+function inScope(q){
+  return q.mode===mode&&($('topic').value===''||String(q.t)===$('topic').value);
+}
+function switchMode(value){
+  mode=value;
+  $('theory').setAttribute('aria-pressed',String(mode==='theory'));
+  $('cases').setAttribute('aria-pressed',String(mode==='case'));
+  $('phase').textContent=mode==='theory'
+    ? 'Mỗi câu hỏi một ý trong bảng. Chọn Toàn bộ để rà đủ các mốc trong chủ đề.'
+    : 'Áp dụng bảng vào tình huống theo tuổi, phân độ và tính Neu tuyệt đối.';
+  $('length').value=mode==='theory'?'all':'20';
+  buildRound(false);
+}
+function status(){
+  const count=bank.filter(inScope).length;
+  $('status').textContent=count+' câu trong phạm vi chọn · '+new Set(bank.filter(q=>inScope(q)&&weak(q.id)>0).map(q=>q.id)).size+' mốc cần ôn lại'+(storageOK?'':' · Tiến độ chỉ lưu trong phiên này');
+}
+function buildRound(review){
+  const pool=shuffle(bank.filter(q=>inScope(q)&&(!review||weak(q.id)>0)));
+  if(!pool.length){
+    $('status').textContent='Chưa có mốc hay sai trong chủ đề đang chọn.';
+    return;
+  }
+  const recent=new Set(saved.recent);
+  const groups=new Map();
+  pool.forEach(q=>{
+    if(!groups.has(q.id))groups.set(q.id,[]);
+    groups.get(q.id).push(q);
+  });
+  const ordered=[...groups.values()].sort((a,b)=>weak(b[0].id)-weak(a[0].id));
+  const want=$('length').value==='all'?pool.length:Math.min(Number($('length').value),pool.length);
+  round=[];
+  const used=new Set();
+  // Sample each group once before returning to it. Prefer stems absent from the previous round.
+  for(const excludeRecent of [true,false]){
+    let added=true;
+    while(added&&round.length<want){
+      added=false;
+      for(const group of ordered){
+        const q=group.find(item=>!used.has(item.key)&&(!excludeRecent||!recent.has(item.key)));
+        if(!q)continue;
+        round.push({q,isReview:false});used.add(q.key);added=true;
+        if(round.length===want)break;
+      }
+    }
+  }
+  saved.recent=round.map(item=>item.q.key);
+  save();
+  baseCount=round.length;position=0;correct=0;reviewCount=0;pending=[];missed=[];repeated=new Set();
+  $('results').hidden=true;
+  $('quiz').hidden=false;
+  status();
+  show(false);
+}
+function show(focus=true){
+  current=round[position];
+  answered=false;
+  const {q,isReview}=current;
+  $('counter').textContent=isReview?'Ôn lại mốc vừa sai':'Câu '+round.slice(0,position+1).filter(x=>!x.isReview).length+' / '+baseCount;
+  $('tag').textContent=topics[q.t];
+  $('progress').max=baseCount;
+  $('progress').value=round.slice(0,position).filter(x=>!x.isReview).length;
+  $('question').textContent=q.q;
+  $('feedback').hidden=true;
+  $('next').hidden=true;
+  $('answers').replaceChildren();
+  shuffle(q.choices.map((value,i)=>({value,isCorrect:i===0}))).forEach(({value,isCorrect},i)=>{
+    const button=el('button');
+    button.type='button';
+    button.append(el('b','ABCD'[i]),el('span',value));
+    button.dataset.correct=String(isCorrect);
+    button.onclick=()=>answer(button);
+    $('answers').append(button);
+  });
+  if(focus)$('question').focus();
+}
+function answer(button){
+  if(answered)return;
+  answered=true;
+  const {q,isReview}=current;
+  const hit=button.dataset.correct==='true';
+  const item=saved.stats[q.id]||{debt:0};
+  item.debt=hit?Math.max(0,item.debt-1):Math.min(6,item.debt+2);
+  saved.stats[q.id]=item;
+  save();
+  status();
+  if(!isReview&&hit)correct++;
+  if(isReview&&hit)reviewCount++;
+  if(!hit){
+    missed.push({q,chosen:button.lastChild.textContent});
+    if(!repeated.has(q.id)){
+      repeated.add(q.id);
+      const unavailable=new Set([...round.map(item=>item.q.key),...pending.map(item=>item.q.key)]);
+      const alternatives=shuffle(bank.filter(other=>other.mode===mode&&other.id===q.id&&other.key!==q.key));
+      const practice=alternatives.find(other=>!unavailable.has(other.key))||alternatives[0]||q;
+      pending.push({q:practice,isReview:true,due:position+4});
+    }
+  }
+  [...$('answers').children].forEach(option=>{
+    option.disabled=true;
+    if(option.dataset.correct==='true')option.classList.add('right');
+    else if(option===button)option.classList.add('wrong');
+  });
+  $('feedback').replaceChildren(el('strong',hit?'Đúng rồi':'Chưa đúng · '+q.choices[0]),el('p',q.why));
+  $('feedback').hidden=false;
+  $('next').textContent=position===round.length-1&&!pending.length?'Xem kết quả':'Câu tiếp';
+  $('next').hidden=false;
+}
+function next(){
+  if(!answered)return;
+  const i=pending.findIndex(item=>item.due<=position+1);
+  if(i>=0||position===round.length-1&&pending.length){
+    const [item]=pending.splice(i<0?0:i,1);
+    round.splice(position+1,0,item);
+  }
+  position++;
+  if(position<round.length){show();return;}
+  $('quiz').hidden=true;
+  $('results').hidden=false;
+  const heading=el('h2',correct+'/'+baseCount+' câu đúng trong đề');
+  heading.tabIndex=-1;
+  $('results').replaceChildren(heading,el('p','Lượt ôn xen kẽ: '+reviewCount+'/'+(round.length-baseCount)+' câu đúng.'));
+  if(missed.length){
+    const details=el('details');
+    details.append(el('summary','Xem '+missed.length+' lượt trả lời sai'));
+    missed.forEach(({q,chosen})=>details.append(el('h2',q.q),el('p','Em chọn: '+chosen+' · Đáp án: '+q.choices[0]),el('p',q.why)));
+    $('results').append(details);
+  }
+  const again=el('button','Làm đề mới');
+  again.className='primary';
+  again.onclick=()=>buildRound(false);
+  $('results').append(again);
+  if(mode==='theory'){
+    const cases=el('button','Sang lượt làm case');
+    cases.onclick=()=>switchMode('case');
+    $('results').append(cases);
+  }
+  heading.focus();
+}
+$('theory').onclick=()=>switchMode('theory');
+$('cases').onclick=()=>switchMode('case');
+$('start').onclick=()=>buildRound(false);
+$('retry').onclick=()=>buildRound(true);
+$('topic').onchange=status;
+$('next').onclick=next;
+document.addEventListener('keydown',event=>{
+  if($('quiz').hidden||event.altKey||event.ctrlKey||event.metaKey||event.repeat)return;
+  if(event.target.closest?.('select,input,textarea,button,summary'))return;
+  const key=event.key.toLowerCase();
+  if(answered&&key==='enter'){event.preventDefault();next();return;}
+  if(answered||!key||key.length!==1)return;
+  const index='abcd'.includes(key)?'abcd'.indexOf(key):'1234'.indexOf(key);
+  if(index>=0){event.preventDefault();$('answers').children[index].click();}
+});
+switchMode('theory');
+</script>
+</html>
